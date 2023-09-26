@@ -1142,7 +1142,7 @@ return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
    // document.getElementById("timezone").innerHTML = timezone;
      // Call getPrayerTimes function to get prayer times for the user's location
    
-     getPrayerTimes1();
+     getPrayerTimes1(latitude, longitude);
    },
    (error) => {
      console.error(error);
