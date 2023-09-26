@@ -472,8 +472,7 @@ function countWord() {
        const hijriday7 = data.data[0].date.hijri.weekday.ar;
        const hijryear7 = parseInt(data.data[0].date.hijri.year);
        const lenghts = data.data.length;
-        const timezone1 = data.data[0].meta.timezone;
-       document.getElementById("timezone").innerHTML=timezone1;
+      
        
     
    var myselected = document.querySelector("#mys1");
@@ -504,8 +503,8 @@ myselected.innerHTML=`
 <option value="16">Dubai (unofficial)</option>`;
 
 
-// const timezone1 = document.querySelector("timezone");
-// timezone1.innerHTML=`${data.data[0].meta.timezone}`,
+const timezone1 = data.data[0].meta.timezone;
+document.getElementById("timezone").innerHTML=timezone1;
 
        //
        console.log(`Lengths of data: ${lenghts}`);
