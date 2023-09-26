@@ -9,7 +9,8 @@ var pirates;
 var cinqua;
 var tasnimsaid;
 var safe;
-
+var meth;
+var latitude, longitude;
 
 function countWord() {
 
@@ -347,7 +348,7 @@ function countWord() {
 
   
   document.getElementById("text").addEventListener("keyup",countWord);
-  document.getElementById("mano").innerHTML = text;
+//   document.getElementById("mano").innerHTML = text;
   
   
   document.getElementById("best3").innerHTML= Counter1*1 + Counter2*2 + Counter3*3 + Counter4*4 + Counter5*5 + Counter6*6 + Counter7*7 + Counter8*8 + Counter9*9 + Counter10*10 + Counter11*20 + Counter12*30 + Counter13*40 + Counter14*50 + Counter15*60 + Counter16*70 + Counter17*80 + Counter18*90 + Counter19*100 + Counter20*200 + Counter21*300 + Counter22*400 + Counter23*500 + Counter24*600 + Counter25*700 + Counter26*800 + Counter27*900 + Counter28*1000  ;
@@ -376,7 +377,7 @@ function countWord() {
 }
 
 
-getPrayerTimes1();
+
 
 
   
@@ -389,64 +390,64 @@ getPrayerTimes1();
 //nice script
 
         
-function getPrayerTimes(latitude, longitude) {
-   // ADHAN PRAYER TIMES API endpoint
-   const url = `https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}&method=4`;
+// function getPrayerTimes(latitude, longitude) {
+//    // ADHAN PRAYER TIMES API endpoint
+//    const url = `https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}&method=4`;
 
-   fetch(url)
-     .then((response) => response.json())
-     .then((data) => {
+//    fetch(url)
+//      .then((response) => response.json())
+//      .then((data) => {
        
-   const timings = data.data.timings;
+//    const timings = data.data.timings;
    
-   const prayerTimes = data.data.timings;
-   const readable = data.data.date.readable ;
-   const forday  = data.data.date.hijri.weekday.ar;
+//    const prayerTimes = data.data.timings;
+//    const readable = data.data.date.readable ;
+//    const forday  = data.data.date.hijri.weekday.ar;
    
-   const hijriday = data.data.date.hijri.day;
-   const hijrmonth = data.data.date.hijri.month.ar;
-    const hijryear = data.data.date.hijri.year;
-   const hijriDate = forday +' '+ hijriday +' '+ hijrmonth +' '+ hijryear;
+//    const hijriday = data.data.date.hijri.day;
+//    const hijrmonth = data.data.date.hijri.month.ar;
+//     const hijryear = data.data.date.hijri.year;
+//    const hijriDate = forday +' '+ hijriday +' '+ hijrmonth +' '+ hijryear;
 
    
    
-   const gregorianDate = data.data.date.gregorian.date;
-   const gregorianDate1= data.data.date;
-   const timezone = data.data.meta.timezone;
+//    const gregorianDate = data.data.date.gregorian.date;
+//    const gregorianDate1= data.data.date;
+//    const timezone = data.data.meta.timezone;
  
-   const sunrise = timings.Sunrise;
-   const sunset = timings.Sunset;
-   const fajr = timings.Fajr;
-   const dhuhr = timings.Dhuhr;
-   const asr = timings.Asr;
-   const maghrib = timings.Maghrib;
-   const isha = timings.Isha;
-   const Imsak = timings.Imsak;
-   const Midnight = timings.Midnight;
+//    const sunrise = timings.Sunrise;
+//    const sunset = timings.Sunset;
+//    const fajr = timings.Fajr;
+//    const dhuhr = timings.Dhuhr;
+//    const asr = timings.Asr;
+//    const maghrib = timings.Maghrib;
+//    const isha = timings.Isha;
+//    const Imsak = timings.Imsak;
+//    const Midnight = timings.Midnight;
 
-       // Display prayer times on the web page
-       document.getElementById("fajr").innerHTML = fajr;
-       document.getElementById("dhuhr").innerHTML = dhuhr;
-       document.getElementById("asr").innerHTML = asr;
-       document.getElementById("maghrib").innerHTML = maghrib;
-       document.getElementById("isha").innerHTML = isha;
-       document.getElementById("hijriDate").innerHTML = hijriDate;
-       document.getElementById("gregorianDate").innerHTML = gregorianDate;
-       document.getElementById("Imsak").innerHTML = Imsak;
-       document.getElementById("Midnight").innerHTML = Midnight;
-       document.getElementById("timezone").innerHTML = timezone;
-       document.getElementById("sunrise").innerHTML = sunrise;
-       document.getElementById("sunset").innerHTML = sunset;
-       document.getElementById("todayprayer").innerHTML = gregorianDate;
+//        // Display prayer times on the web page
+//        document.getElementById("fajr").innerHTML = fajr;
+//        document.getElementById("dhuhr").innerHTML = dhuhr;
+//        document.getElementById("asr").innerHTML = asr;
+//        document.getElementById("maghrib").innerHTML = maghrib;
+//        document.getElementById("isha").innerHTML = isha;
+//        document.getElementById("hijriDate").innerHTML = hijriDate;
+//        document.getElementById("gregorianDate").innerHTML = gregorianDate;
+//        document.getElementById("Imsak").innerHTML = Imsak;
+//        document.getElementById("Midnight").innerHTML = Midnight;
+//        document.getElementById("timezone").innerHTML = timezone;
+//        document.getElementById("sunrise").innerHTML = sunrise;
+//        document.getElementById("sunset").innerHTML = sunset;
+//        document.getElementById("todayprayer").innerHTML = gregorianDate;
 
-       console.log(data);
-
-
+//        console.log(data);
 
 
 
-     });
- }
+
+
+//      });
+//  }
 
 
 
@@ -455,9 +456,9 @@ function getPrayerTimes(latitude, longitude) {
  //api calendar
  
 
- function getPrayerTimes1(latitude, longitude ) {
+ function getPrayerTimes1(meth) {
    // ADHAN PRAYER TIMES API endpoint
-   const url = `http://api.aladhan.com/v1/hijriCalendar/1445/9?latitude=${latitude}&longitude=${longitude}&method=2`;
+   const url = `http://api.aladhan.com/v1/hijriCalendar/1945/9?latitude=${latitude}&longitude=${longitude}&method=${meth}`;
 
    fetch(url)
      .then((response) => response.json())
@@ -466,9 +467,46 @@ function getPrayerTimes(latitude, longitude) {
        // Extract prayer times from the response
        
        // hijri
+      //   hijryear9 = data.data[0].date.hijri.year;
+
        const hijriday7 = data.data[0].date.hijri.weekday.ar;
        const hijryear7 = parseInt(data.data[0].date.hijri.year);
        const lenghts = data.data.length;
+        const timezone1 = data.data[0].meta.timezone;
+       document.getElementById("timezone").innerHTML=timezone1;
+       
+    
+   var myselected = document.querySelector("#mys1");
+
+myselected.innerHTML=`  
+<option selected >${data.data[0].meta.method.name}</option> 
+<option value="1">University of Islamic Sciences, Karachi</option>
+<option value="2">Islamic Society of North America</option>
+<option value="3">Muslim World League</option>
+<option value="4">Umm Al-Qura University, Makkah</option>
+<option value="5">Egyptian General Authority of Survey</option>
+<option value="6"></option>
+<option value="7">
+  Institute of Geophysics, University of Tehran
+</option>
+<option value="8">Gulf Region</option>
+<option value="9">Kuwait</option>
+<option value="10">Qatar</option>
+<option value="11">Majlis Ugama Islam Singapura, Singapore</option>
+<option value="12">Union Organization islamic de France</option>
+<option value="13">Diyanet İşleri Başkanlığı, Turkey</option>
+<option value="14">
+  Spiritual Administration of Muslims of Russia
+</option>
+<option value="15">
+  Moonsighting Committee Worldwide (also requires shafaq parameter)
+</option>
+<option value="16">Dubai (unofficial)</option>`;
+
+
+// const timezone1 = document.querySelector("timezone");
+// timezone1.innerHTML=`${data.data[0].meta.timezone}`,
+
        //
        console.log(`Lengths of data: ${lenghts}`);
 
@@ -1016,7 +1054,10 @@ return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
      //
      document.getElementById("unita_mano").innerHTML = unites ;
 
-     if (vista===1){
+     if (vista===0){
+      document.getElementById("time_selsabil").innerHTML = ` ${sunsetTime} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse1)}`;
+
+     }else  if  (vista===1){
       document.getElementById("time_selsabil").innerHTML = ` ${sunsetTime} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse1)}`;
 
      }else  if (vista===2){
@@ -1092,16 +1133,17 @@ return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
  // Get user's current location using Geolocation API
  navigator.geolocation.watchPosition(
    (position) => {
-     const latitude = position.coords.latitude;
-     const longitude = position.coords.longitude;
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+      // const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
      // Display latitude and longitude on the web page
      document.getElementById("latitude").innerHTML = latitude;
      document.getElementById("longitude").innerHTML = longitude;
-
+   // document.getElementById("timezone").innerHTML = timezone;
      // Call getPrayerTimes function to get prayer times for the user's location
-     getPrayerTimes(latitude, longitude);
-     getPrayerTimes1(latitude, longitude);
+   
+     getPrayerTimes1();
    },
    (error) => {
      console.error(error);
@@ -1112,408 +1154,6 @@ return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 
 
 
-
-var ws1 =`<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#2ecc71"><span style="background-color:#000000">بسم الله الرحمن الرحيم</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp; على </span></span><span style="color:#ffffff"><span style="background-color:#000000">(12)</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :) </span></span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">1</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">البرج الروحاني&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#00ff00"><span style="background-color:#000000">&nbsp;الحمل</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الطالع&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=&nbsp;</span></span><span style="background-color:#000000"> &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">المريخ</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">الطبع / المثلث&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#ff6600"><span style="background-color:#000000">&nbsp;ناري</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الساعة الروحانية&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;الأولى بعد الشروق</span></span></span></p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var ws2 =`<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#2ecc71"><span style="background-color:#000000">بسم الله الرحمن الرحيم</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp; على </span></span><span style="color:#ffffff"><span style="background-color:#000000">(12)</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :) </span></span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">2</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">البرج الروحاني&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#00ff00"><span style="background-color:#000000">&nbsp;الثور</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الطالع&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=&nbsp;</span></span><span style="background-color:#000000"> &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">الزهرة</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">الطبع / المثلث&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#cc6600"><span style="background-color:#000000">&nbsp;ترابي</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الساعة الروحانية&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;الثانية بعد الشروق</span></span></span></p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var ws3 =`<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#2ecc71"><span style="background-color:#000000">بسم الله الرحمن الرحيم</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp; على </span></span><span style="color:#ffffff"><span style="background-color:#000000">(12)</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span><span style="background-color:#000000"> </span></span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">3</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">البرج الروحاني&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#00ff00"><span style="background-color:#000000">&nbsp;الجوزاء</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الطالع&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=&nbsp;</span></span><span style="background-color:#000000"> &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">عطارد</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">الطبع / المثلث&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#00ccff"><span style="background-color:#000000">هوائي</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الساعة الروحانية&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;الثالثة بعد الشروق</span></span></span></p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var ws4 =`<p dir="rtl" style="text-align:center">&nbsp;</p>
-
-<p dir="rtl" style="text-align:center"><span style="color:#2ecc71"><span style="font-size:36px"><span style="background-color:#000000">بسم الله الرحمن الرحيم</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp;على </span></span><span style="color:#ffffff"><span style="background-color:#000000">( 12)</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span><span style="background-color:#000000"> </span></span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">4</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">البرج الروحاني&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#00ff00"><span style="background-color:#000000">&nbsp;السرطان</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الطالع&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=&nbsp;</span></span><span style="background-color:#000000"> &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">القمر</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">الطبع / المثلث&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#66ffff"><span style="background-color:#000000">مائي</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الساعة الروحانية&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;الرابعة بعد الشروق</span></span></span></p>
-
-<p dir="rtl">&nbsp;</p>
-
-
-
-`;
-var ws5 =`<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#2ecc71"><span style="background-color:#000000">بسم الله الرحمن الرحيم</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp; على </span></span><span style="color:#ffffff"><span style="background-color:#000000">(12)</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span><span style="background-color:#000000"> </span></span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">5</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">البرج الروحاني&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#00ff00"><span style="background-color:#000000">&nbsp;الأسد</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الطالع&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=&nbsp;</span></span><span style="background-color:#000000"> &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">الشمس</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">الطبع / المثلث&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#f39c12"><span style="background-color:#000000">ناري</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الساعة الروحانية&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;الخامسة بعد الشروق</span></span></span></p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var ws6 =`<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#2ecc71"><span style="background-color:#000000">بسم الله الرحمن الرحيم</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp; على</span></span><span style="color:#ffffff"><span style="background-color:#000000"> (12)</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span><span style="background-color:#000000"> </span></span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">6</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">البرج الروحاني&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#00ff00"><span style="background-color:#000000">&nbsp;العذراء</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الطالع&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=&nbsp;</span></span><span style="background-color:#000000"> &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">عطارد</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">الطبع / المثلث&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#cc6600"><span style="background-color:#000000"> ترابي</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الساعة الروحانية&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;السادسة بعد الشروق</span></span></span></p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var ws7 =`<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#2ecc71"><span style="background-color:#000000">بسم الله الرحمن الرحيم</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp; على </span></span><span style="color:#ffffff"><span style="background-color:#000000">( 12) </span></span><span style="color:#0066ff"><span style="background-color:#000000">:)</span><span style="background-color:#000000"> </span></span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">7</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">البرج الروحاني&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#00ff00"><span style="background-color:#000000">&nbsp;الميزان</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الطالع&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=&nbsp;</span></span><span style="background-color:#000000"> &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">الزهراء</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">الطبع / المثلث&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#00ccff"><span style="background-color:#000000"> هوائي</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الساعة الروحانية&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;السابعة بعد الشروق</span></span></span></p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var ws8 =`<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#2ecc71"><span style="background-color:#000000">بسم الله الرحمن الرحيم</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp; على </span></span><span style="color:#ffffff"><span style="background-color:#000000">(12)</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :) </span></span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">8</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">البرج الروحاني&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#00ff00"><span style="background-color:#000000">&nbsp;العقرب</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الطالع&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=&nbsp;</span></span><span style="background-color:#000000"> &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">المريخ</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">الطبع / المثلث&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#00ccff"><span style="background-color:#000000"> مائي</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الساعة الروحانية&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;الثامنة بعد الشروق</span></span></span></p>
-
-<p dir="rtl">&nbsp;</p>
-
-
-`;
-var ws9 =`<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#2ecc71"><span style="background-color:#000000">بسم الله الرحمن الرحيم</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp; على </span></span><span style="color:#ffffff"><span style="background-color:#000000">(12)</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span><span style="background-color:#000000"> </span></span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">9</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">البرج الروحاني&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#00ff00"><span style="background-color:#000000">القوس</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الطالع&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=&nbsp;</span></span><span style="background-color:#000000"> &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">المشتري</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">الطبع / المثلث&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f39c12"><span style="background-color:#000000"> ناري</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الساعة الروحانية&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;التاسعة بعد الشروق</span></span></span></p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var ws10 =`<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#2ecc71"><span style="background-color:#000000">بسم الله الرحمن الرحيم</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp; على </span></span><span style="color:#ffffff"><span style="background-color:#000000">(10) </span></span><span style="color:#0066ff"><span style="background-color:#000000">:)</span><span style="background-color:#000000"> </span></span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">10</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">البرج الروحاني&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#00ff00"><span style="background-color:#000000">الجدي</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الطالع&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=&nbsp;</span></span><span style="background-color:#000000"> &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">زحل</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">الطبع / المثلث&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#cc6600"><span style="background-color:#000000"> ترابي</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الساعة الروحانية&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;العاشرة بعد الشروق</span></span></span></p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var ws11 =`<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#2ecc71"><span style="background-color:#000000">بسم الله الرحمن الرحيم</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp; على </span></span><span style="color:#ffffff"><span style="background-color:#000000">(12)</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span><span style="background-color:#000000"> </span></span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">11</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">البرج الروحاني&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#00ff00"><span style="background-color:#000000">الدلو</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الطالع&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=&nbsp;</span></span><span style="background-color:#000000"> &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">زحل</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">الطبع / المثلث&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#00ccff"><span style="background-color:#000000"> هوائي</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الساعة الروحانية&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;الحادية عشر بعد الشروق</span></span></span></p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var ws12 =`<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#2ecc71"><span style="background-color:#000000">بسم الله الرحمن الرحيم</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp; على </span></span><span style="color:#ffffff"><span style="background-color:#000000">(12)</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span><span style="background-color:#000000"> </span></span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">12</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">البرج الروحاني&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#00ff00"><span style="background-color:#000000">الحوت</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الطالع&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=&nbsp;</span></span><span style="background-color:#000000"> &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">المشتري</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">الطبع / المثلث&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#66ffff"><span style="background-color:#000000"> مائي</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الساعة الروحانية&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;الثانية عشر بعد الشروق</span></span></span></p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var ws13 = `<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#2ecc71"><span style="background-color:#000000">بسم الله الرحمن الرحيم</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp; على </span></span><span style="color:#ffffff"><span style="background-color:#000000">(12)</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span><span style="background-color:#000000"> </span></span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">0&nbsp;</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">البرج الروحاني&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp; </span><span style="color:#00ff00"><span style="background-color:#000000">الحوت</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الطالع&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=&nbsp;</span></span><span style="background-color:#000000"> &nbsp;</span><span style="color:#00ff00"><span style="background-color:#000000">المشتري</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ffffff"><span style="background-color:#000000">الطبع / المثلث&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="background-color:#000000"> </span><span style="color:#ccff00"><span style="background-color:#000000">=</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#66ffff"><span style="background-color:#000000"> مائي</span></span></span></p>
-
-<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">الساعة الروحانية&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;الثانية عشر بعد الشروق</span></span></span></p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-
-var smm1 = `<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة&nbsp; على </span></span><span style="color:#2ecc71"><span style="background-color:#000000">(4)</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp;:)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;1</span></span></span></p>
-
-<p dir="rtl" style="text-align:center">&nbsp;</p>
-
-<p dir="rtl">&nbsp;</p>
-
-
-`;
-var smm2 = `<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة&nbsp; على </span></span><span style="color:#2ecc71"><span style="background-color:#000000">(4)</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp;:)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;2</span></span></span></p>
-
-<p dir="rtl" style="text-align:center">&nbsp;</p>
-
-<p dir="rtl">&nbsp;</p>
-
-
-
-`;
-var smm3 = `<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة&nbsp; على </span></span><span style="color:#2ecc71"><span style="background-color:#000000">(4)</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp;:)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;3</span></span></span></p>
-
-<p dir="rtl" style="text-align:center">&nbsp;</p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var smm4 = `<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة&nbsp; على </span></span><span style="color:#2ecc71"><span style="background-color:#000000">(4)</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp;:)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;4</span></span></span></p>
-
-<p dir="rtl" style="text-align:center">&nbsp;</p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var smm5 = `<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">باقي القسمة&nbsp; على </span></span><span style="color:#2ecc71"><span style="background-color:#000000">(4)</span></span><span style="color:#0066ff"><span style="background-color:#000000">&nbsp;:)</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;0</span></span></span></p>
-
-<p dir="rtl" style="text-align:center">&nbsp;</p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-
-
-var youm1 = `<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">اليوم الخاص بك&nbsp; هو باقي القسمة على </span></span><span style="color:#66ffff"><span style="background-color:#000000">(7)</span></span><span style="color:#ecf0f1"><span style="background-color:#000000">&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :1</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;الأحد</span></span></span></p>
-
-<p dir="rtl" style="text-align:center">&nbsp;</p>
-
-<p dir="rtl">&nbsp;</p>
-
-
-
-`;
-var youm2 = `<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">اليوم الخاص بك&nbsp; هو باقي القسمة على </span></span><span style="color:#66ffff"><span style="background-color:#000000">(7)</span></span><span style="color:#ecf0f1"><span style="background-color:#000000">&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :2</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;الإثنين</span></span></span></p>
-
-<p dir="rtl" style="text-align:center">&nbsp;</p>
-
-<p dir="rtl">&nbsp;</p>
-
-
-`;
-var youm3 = `<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">اليوم الخاص بك&nbsp; هو باقي القسمة على </span></span><span style="color:#66ffff"><span style="background-color:#000000">(7)</span></span><span style="color:#ecf0f1"><span style="background-color:#000000">&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :3</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;الثلاثاء</span></span></span></p>
-
-<p dir="rtl" style="text-align:center">&nbsp;</p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var youm4 = `<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">اليوم الخاص بك&nbsp; هو باقي القسمة على </span></span><span style="color:#66ffff"><span style="background-color:#000000">(7)</span></span><span style="color:#ecf0f1"><span style="background-color:#000000">&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :4</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;الأربعاء</span></span></span></p>
-
-<p dir="rtl" style="text-align:center">&nbsp;</p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var youm5 = `<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">اليوم الخاص بك&nbsp; هو باقي القسمة على </span></span><span style="color:#66ffff"><span style="background-color:#000000">(7)</span></span><span style="color:#ecf0f1"><span style="background-color:#000000">&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :5</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;الخميس</span></span></span></p>
-
-<p dir="rtl" style="text-align:center">&nbsp;</p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var youm6 = `<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">اليوم الخاص بك&nbsp; هو باقي القسمة على </span></span><span style="color:#66ffff"><span style="background-color:#000000">(7)</span></span><span style="color:#ecf0f1"><span style="background-color:#000000">&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :6</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;الجمعة</span></span></span></p>
-
-<p dir="rtl" style="text-align:center">&nbsp;</p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var youm7 = `<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">اليوم الخاص بك&nbsp; هو باقي القسمة على </span></span><span style="color:#66ffff"><span style="background-color:#000000">(7)</span></span><span style="color:#ecf0f1"><span style="background-color:#000000">&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> :7</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;السبت</span></span></span></p>
-
-<p dir="rtl" style="text-align:center">&nbsp;</p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-var youm8 = `<p dir="rtl" style="text-align:center"><span style="font-size:36px"><span style="color:#ecf0f1"><span style="background-color:#000000">اليوم الخاص بك&nbsp; هو باقي القسمة على </span></span><span style="color:#66ffff"><span style="background-color:#000000">(7)</span></span><span style="color:#ecf0f1"><span style="background-color:#000000">&nbsp;</span></span><span style="color:#0066ff"><span style="background-color:#000000"> : 0</span></span><span style="color:#ccff00"><span style="background-color:#000000"> =</span></span><span style="background-color:#000000">&nbsp;</span><span style="color:#f1c40f"><span style="background-color:#000000"> &nbsp;السبت</span></span></span></p>
-
-<p dir="rtl" style="text-align:center">&nbsp;</p>
-
-<p dir="rtl">&nbsp;</p>
-
-`;
-
-function run_rohani(){
-    var a = document.getElementById("numbero").value;
-var b_k12 = a%12 ;
-var b_k4 = a%4 ;
-var b_k7 = a%7 ;
-
-    if (b_k12 ===1){
-        document.write(ws1);
-    }else if (b_k12 ===2){
-        document.write(ws2);
-    }else if (a%12 ===3){
-        document.write(ws3);
-    }else if (b_k12 ===4){
-        document.write(ws4);
-    }else if (b_k12 ===5){
-        document.write(ws5);
-    }else if (b_k12 ===6){
-        document.write(ws6);
-    }else if (b_k12 ===7){
-        document.write(ws7);
-    }else if (b_k12 ===8){
-        document.write(ws8);
-    }else if (b_k12 ===9){
-        document.write(ws9);
-    }else if (b_k12 ===10){
-        document.write(ws10);
-    }else if (b_k12 ===11){
-        document.write(ws11);
-   
-    }else if (b_k12 ===12  ){
-        document.write(ws12);
-    }else  if (b_k12 ===0  ){
-        document.write(ws13);
-    }else
-    document.write("");
-
-    //
-    if (b_k4 === 1) {
-
-        document.write(smm1);
-    }else if (b_k4 === 2) {
-    
-        document.write(smm2);
-    }else if (b_k4 === 3) {
-    
-        document.write(smm3);
-    }else if (b_k4 === 4) {
-    
-        document.write(smm4);
-    }else if (b_k4 === 0) {
-    
-        document.write(smm5);
-    }else
-    document.write("");
-    //
-
-
-    if (b_k7 ===1) {
-
-        document.write(youm1)
-    
-    }else if (b_k7 ===2) {
-    
-        document.write(youm2)
-    
-    }else if (b_k7 ===3) {
-    
-        document.write(youm3)
-    
-    }else if (b_k7 ===4) {
-    
-        document.write(youm4)
-    
-    }else if (b_k7 ===5) {
-    
-        document.write(youm5)
-    
-    }else if (b_k7 ===6) {
-    
-        document.write(youm6)
-    
-    
-    }else if (b_k7 ===7) {
-    
-        document.write(youm7)
-    
-    
-    }else if (b_k7 ===0) {
-    
-        document.write(youm8)
-    
-    
-    }
-     
-    else
-    
-    document.write("")
-    
-    
-}
 
 
 
