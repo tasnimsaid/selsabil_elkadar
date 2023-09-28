@@ -236,7 +236,19 @@ left: 10px;
 
 
 
+.crestal{
+    font-size: smaller !important;
+    position: relative !important;
+    /* left: -10px !important; */
+    justify-content: center;
 
+}
+.videos{
+
+    background-color: blue;
+    color: aliceblue;
+    font-size: x-large;
+}
 
 
 /* 

@@ -20,48 +20,54 @@
     </header>
 
     <aside>
+
+
+      <table class ="best">
+
+
+        <tr >
+            
+            <td  id="best6" class ="best6"></td>
+            <th  class ="best5">عدد حروف النص</th>
+       
+
+
+        </tr>
+
+        <tr >
+           
+            <td id ="best4"></td>
+            <th class ="best2">عدد كلمات هذا النص </th>
+       
+
+
+        </tr>
+        <tr >
+            
+            <td  id="best3" class ="best3"></td>
+            <th  class ="best1">القيمة العددية لهذا النص</th>
+       
+
+
+        </tr>
+        
+    </table>
+  
+      <div class = "h_class">
+
+    <h2 class="eljafr crestal" > حساب  الجفر المغربي  </h2>
+</div>
+
+
+<a class="videos"  href="">فيديو تعريفي</a>
         <form>
     
             <textarea dir="rtl" placeholder ="  أكتب إسمك + إسم أمك(ي)  مثال : عادل حنان " class ="textarea1" id="text" onkeypress="countWord() ,countWords()"  style="height: 100px; width: 280px;"></textarea>
           
         </form> 
-<div class = "h_class">
 
-    <h1 class="eljafr"> قاعدة  حساب  الجفر  </h1>
-</div>
        
 
-        <table class ="best">
-
-
-            <tr >
-                
-                <td  id="best6" class ="best6"></td>
-                <th  class ="best5">عدد حروف النص</th>
-           
-    
-    
-            </tr>
-
-            <tr >
-               
-                <td id ="best4"></td>
-                <th class ="best2">عدد كلمات هذا النص </th>
-           
-    
-    
-            </tr>
-            <tr >
-                
-                <td  id="best3" class ="best3"></td>
-                <th  class ="best1">القيمة العددية لهذا النص</th>
-           
-    
-    
-            </tr>
-            
-        </table>
-      
         <!-- nice -->
 
     <!-- test for render -->
@@ -129,6 +135,7 @@
     <!-- <p>Date (Hijri): <span id="hijriDate"></span></p>
     <p>gregorianDate: <span id="gregorianDate"></span></p> -->
     <p>  بداية أول رمضان : <span id="firstholidays"></span></p>
+    <!-- <p>  الموافق   للتاريخ الميلادي : <span id="ask"></span></p> -->
 
   </div>
   <div >
@@ -748,8 +755,13 @@ function countWord() {
        const hijriday7 = data.data[0].date.hijri.weekday.ar;
        const hijryear7 = parseInt(data.data[0].date.hijri.year);
        const lenghts = data.data.length;
-      
-       
+
+
+       hijriCalendar.gregorian.date
+
+    const gregorianDate= data.data[0].date.gregorian;
+     console.log("gregorianDate");
+      document.getElementById("ask").innerHTML=gregorianDate;
     
    var myselected = document.querySelector("#mys1");
 
@@ -1385,7 +1397,7 @@ return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
     
 
 
-    window.getPrayerTimes1 = getPrayerTimes1;
+
 
 
 // END test 1 for timing
