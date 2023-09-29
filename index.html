@@ -1,13 +1,15 @@
+
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="style.css">
-    <title>ليلة القدر & الساعة الروحانية</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
 <body>
+    
+
 
 
 <div id = "container">
@@ -60,6 +62,7 @@
 
 
 <a class="videos"  href="">فيديو تعريفي</a>
+
         <form>
     
             <textarea dir="rtl" placeholder ="  أكتب إسمك + إسم أمك(ي)  مثال : عادل حنان " class ="textarea1" id="text" onkeypress="countWord() ,countWords()"  style="height: 100px; width: 280px;"></textarea>
@@ -75,7 +78,7 @@
     <div  id="resqua">
         <p dir="rtl" style="text-align:center"><span style="font-size:18px"><span style="background-color:#39d41a">&nbsp;بسم الله الرحمن الرحيم&nbsp;</span></span></p>
       
-        <p dir="rtl" style="text-align:center"><span style="background-color:#ecf0f1">&nbsp;السنة الهجرية&nbsp; :&nbsp; &nbsp;<span id="year_mano"></span></span></p>
+        <p dir="rtl" style="text-align:center"><span style="background-color:#ecf0f1">&nbsp;باقي قسمة السنة الهجرية : %2 &nbsp; :&nbsp; &nbsp;<span id="year_mano"></span></span></p>
         
         <p dir="rtl" style="text-align:center"><span style="background-color:#ecf0f1">&nbsp;بما أن أول رمضان :&nbsp; &nbsp;<span id="first_mano"></span></span></p>
         
@@ -660,110 +663,41 @@ function countWord() {
 }
 
 
-
-
-
-  
-//end nice script
-
-   //
-
-  
-
-//nice script
-
         
-// function getPrayerTimes(latitude, longitude) {
-//    // ADHAN PRAYER TIMES API endpoint
-//    const url = `https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}&method=4`;
-
-//    fetch(url)
-//      .then((response) => response.json())
-//      .then((data) => {
-       
-//    const timings = data.data.timings;
-   
-//    const prayerTimes = data.data.timings;
-//    const readable = data.data.date.readable ;
-//    const forday  = data.data.date.hijri.weekday.ar;
-   
-//    const hijriday = data.data.date.hijri.day;
-//    const hijrmonth = data.data.date.hijri.month.ar;
-//     const hijryear = data.data.date.hijri.year;
-//    const hijriDate = forday +' '+ hijriday +' '+ hijrmonth +' '+ hijryear;
-
-   
-   
-//    const gregorianDate = data.data.date.gregorian.date;
-//    const gregorianDate1= data.data.date;
-//    const timezone = data.data.meta.timezone;
- 
-//    const sunrise = timings.Sunrise;
-//    const sunset = timings.Sunset;
-//    const fajr = timings.Fajr;
-//    const dhuhr = timings.Dhuhr;
-//    const asr = timings.Asr;
-//    const maghrib = timings.Maghrib;
-//    const isha = timings.Isha;
-//    const Imsak = timings.Imsak;
-//    const Midnight = timings.Midnight;
-
-//        // Display prayer times on the web page
-//        document.getElementById("fajr").innerHTML = fajr;
-//        document.getElementById("dhuhr").innerHTML = dhuhr;
-//        document.getElementById("asr").innerHTML = asr;
-//        document.getElementById("maghrib").innerHTML = maghrib;
-//        document.getElementById("isha").innerHTML = isha;
-//        document.getElementById("hijriDate").innerHTML = hijriDate;
-//        document.getElementById("gregorianDate").innerHTML = gregorianDate;
-//        document.getElementById("Imsak").innerHTML = Imsak;
-//        document.getElementById("Midnight").innerHTML = Midnight;
-//        document.getElementById("timezone").innerHTML = timezone;
-//        document.getElementById("sunrise").innerHTML = sunrise;
-//        document.getElementById("sunset").innerHTML = sunset;
-//        document.getElementById("todayprayer").innerHTML = gregorianDate;
-
-//        console.log(data);
-
-
-
-
-
-//      });
-//  }
-
-
-
-
-
  //api calendar
  
 
  function getPrayerTimes1(meth) {
-   // ADHAN PRAYER TIMES API endpoint
-   const url = `http://api.aladhan.com/v1/hijriCalendar/1945/9?latitude=${latitude}&longitude=${longitude}&method=${meth}`;
 
-   fetch(url)
-     .then((response) => response.json())
-     .then((data) => {
+
+
+const url = `http://api.aladhan.com/v1/hijriCalendar/1446/9?latitude=36.44156&longitude=6.26721&method=$2`;
+
+
+fetch(url).then(response=>{return response.json()}).then(data =>{
+
+    console.log(data);
+
+ //
       
        // Extract prayer times from the response
        
        // hijri
       //   hijryear9 = data.data[0].date.hijri.year;
 
-       const hijriday7 = data.data[0].date.hijri.weekday.ar;
-       const hijryear7 = parseInt(data.data[0].date.hijri.year);
-       const lenghts = data.data.length;
+      const hijriday7 = data.data[0].date.hijri.weekday.ar;
+   
+   const hijryear7 = parseInt(data.data[0].date.hijri.year);
+   const lenghts = data.data.length;
 
 
-       hijriCalendar.gregorian.date
+   hijriCalendar.gregorian.date
 
-    const gregorianDate= data.data[0].date.gregorian;
-     console.log("gregorianDate");
-      document.getElementById("ask").innerHTML=gregorianDate;
-    
-   var myselected = document.querySelector("#mys1");
+const gregorianDate= data.data[0].date.gregorian;
+ console.log("gregorianDate");
+  document.getElementById("ask").innerHTML=gregorianDate;
+
+var myselected = document.querySelector("#mys1");
 
 myselected.innerHTML=`  
 <option selected >${data.data[0].meta.method.name}</option> 
@@ -774,7 +708,7 @@ myselected.innerHTML=`
 <option value="5">Egyptian General Authority of Survey</option>
 <option value="6"></option>
 <option value="7">
-  Institute of Geophysics, University of Tehran
+Institute of Geophysics, University of Tehran
 </option>
 <option value="8">Gulf Region</option>
 <option value="9">Kuwait</option>
@@ -783,10 +717,10 @@ myselected.innerHTML=`
 <option value="12">Union Organization islamic de France</option>
 <option value="13">Diyanet İşleri Başkanlığı, Turkey</option>
 <option value="14">
-  Spiritual Administration of Muslims of Russia
+Spiritual Administration of Muslims of Russia
 </option>
 <option value="15">
-  Moonsighting Committee Worldwide (also requires shafaq parameter)
+Moonsighting Committee Worldwide (also requires shafaq parameter)
 </option>
 <option value="16">Dubai (unofficial)</option>`;
 
@@ -794,432 +728,445 @@ myselected.innerHTML=`
 const timezone1 = data.data[0].meta.timezone;
 document.getElementById("timezone").innerHTML=timezone1;
 
-       //
-       console.log(`Lengths of data: ${lenghts}`);
+   //
+   console.log(`Lengths of data: ${lenghts}`);
 
 
 
-       var forday1 = data.data[0].date.hijri.weekday.ar;
-       const hijriday1 = data.data[0].date.hijri.day;
-       const hijrmonth1 = data.data[0].date.hijri.month.ar;
-       const hijryear1 = data.data[0].date.hijri.year;
-       const hijriDate1 = forday1 + " " + hijriday1 + " " + hijrmonth1 + " " + hijryear1;
-       const hijriDate2 = forday1 + " " + hijriday1 + " " + hijrmonth1;
+   var forday1 = data.data[0].date.hijri.weekday.ar;
+   const hijriday1 = data.data[0].date.hijri.day;
+   const hijrmonth1 = data.data[0].date.hijri.month.ar;
+   const hijryear1 = data.data[0].date.hijri.year;
+   const hijriDate1 = forday1 + " " + hijriday1 + " " + hijrmonth1 + " " + hijryear1;
+   const hijriDate2 = forday1 + " " + hijriday1 + " " + hijrmonth1;
 
-       document.getElementById("firstholidays").innerHTML = hijriDate1;
+   document.getElementById("firstholidays").innerHTML = hijriDate1;
 
-       console.log(`التاريخ الهجري ${hijriDate2}`);
+   console.log(`التاريخ الهجري ${hijriDate2}`);
 
-      //  Display prayer times to the user
-      //  console.log(`Prayer times for ${data.data[0].date.readable}:`);
-      //  console.log(`Fajr: ${fajrTime}`);
-      //  console.log(`Dhuhr: ${dhuhrTime}`);
-      //  console.log(`Asr: ${asrTime}`);
-      //  console.log(`Maghrib: ${maghribTime}`);
-      //  console.log(`Isha: ${ishaTime}`);
-      //  console.log(`Sunrise: ${sunriseTime}`);
-      //  console.log(`Sunset: ${sunsetTime}`);
 
-      //  console.log(`Lengths of data: ${lenghts}`);
+   if (hijryear1 % 2===1 ){
+     document.getElementById("cc").innerHTML = `<pre>   فردية لأن الباقي : 1</pre> `;
 
-       //
-      //  if( hijriday7 ==='الاثنين'){
-        
-      
-      //  const pirates = 21;
-      //   const cinqua = 702;
-      //   const tasnimsaid = 20;
-      //   const safe = pirates + cinqua +  tasnimsaid + hijryear7;  
-      //     console.log(safe);
-      //   const  vista = safe % 2 + safe % 3 + safe % 7 ;
-      //    document.getElementById("total_mano").innerHTML = safe;
-      //    document.getElementById("baki_mano").innerHTML = vista;
-        
+
+   }else  if (hijryear1 % 2===0 ){
+     document.getElementById("cc").innerHTML = `<pre>   زوجية لأن الباقي : 0</pre> `;
+
+
+   }else{
+     console.log( jaaaaaa);
+   }
   
-      //    document.getElementById("leilate_mano").innerHTML = 27;
-       
-         
-      //  //   document.getElementById("unita_mano").innerHTML = unites;
-      //    // document.getElementById("hour_mano").textContent = <p>${horse1}&nbsp; &nbsp; إلى&nbsp; &nbsp; ${sunset} </p>;
-         
-          
-      //     }else
+  //  Display prayer times to the user
+  //  console.log(`Prayer times for ${data.data[0].date.readable}:`);
+  //  console.log(`Fajr: ${fajrTime}`);
+  //  console.log(`Dhuhr: ${dhuhrTime}`);
+  //  console.log(`Asr: ${asrTime}`);
+  //  console.log(`Maghrib: ${maghribTime}`);
+  //  console.log(`Isha: ${ishaTime}`);
+  //  console.log(`Sunrise: ${sunriseTime}`);
+  //  console.log(`Sunset: ${sunsetTime}`);
 
-      // document.addEventListener("keyup",getPrayerTimes1);
+  //  console.log(`Lengths of data: ${lenghts}`);
 
-        
-
-
-
-
-
-
-
+   //
+  //  if( hijriday7 ==='الاثنين'){
+    
   
-      if( hijriday7 ==='السبت' && lenghts===30 && hijryear7 % 2 ===0){
-        document.getElementById("leilate_mano").innerHTML = 21;
+  //  const pirates = 21;
+  //   const cinqua = 702;
+  //   const tasnimsaid = 20;
+  //   const safe = pirates + cinqua +  tasnimsaid + hijryear7;  
+  //     console.log(safe);
+  //   const  vista = safe % 2 + safe % 3 + safe % 7 ;
+  //    document.getElementById("total_mano").innerHTML = safe;
+  //    document.getElementById("baki_mano").innerHTML = vista;
+    
 
-        pirates = 21;
-        cinqua = 118;
-     
-
-        safe = pirates + cinqua + hijryear7+matlob;                            
-        vista = safe % 2 + safe % 3 + safe % 7 ;
-        document.getElementById("total_mano").innerHTML = safe;
-        document.getElementById("baki_mano").innerHTML = vista;
-     fajrTime = data.data[21].timings.Fajr;
-     sunsetTime = data.data[21].timings.Sunset;
-
-         }else if( hijriday7 ==='الاحد' && lenghts===30 && hijryear7 % 2 ===0){
-           document.getElementById("leilate_mano").innerHTML = 27;
-
-           pirates = 27;
-           cinqua = 118;
-        
+  //    document.getElementById("leilate_mano").innerHTML = 27;
    
-           safe = pirates + cinqua + hijryear7+matlob;                            
-           vista = safe % 2 + safe % 3 + safe % 7 ;
-           document.getElementById("total_mano").innerHTML = safe;
-           document.getElementById("baki_mano").innerHTML = vista;
-        fajrTime = data.data[27].timings.Fajr;
-        sunsetTime = data.data[27].timings.Sunset;
+     
+  //  //   document.getElementById("unita_mano").innerHTML = unites;
+  //    // document.getElementById("hour_mano").textContent = <p>${horse1}&nbsp; &nbsp; إلى&nbsp; &nbsp; ${sunset} </p>;
+     
+      
+  //     }else
+
+  // document.addEventListener("keyup",getPrayerTimes1);
+
+    
+
+
+
+
+
+
+
+
+  if( hijriday7 ==='السبت' && lenghts===30 && hijryear7 % 2 ===0){
+    document.getElementById("leilate_mano").innerHTML = 21;
+
+    pirates = 21;
+    cinqua = 118;
+ 
+
+    safe = pirates + cinqua + hijryear7+matlob;                            
+    vista = safe % 2 + safe % 3 + safe % 7 ;
+    document.getElementById("total_mano").innerHTML = safe;
+    document.getElementById("baki_mano").innerHTML = vista;
+ fajrTime = data.data[21].timings.Fajr;
+ sunsetTime = data.data[21].timings.Sunset;
+
+     }else if( hijriday7 ==='الاحد' && lenghts===30 && hijryear7 % 2 ===0){
+       document.getElementById("leilate_mano").innerHTML = 27;
+
+       pirates = 27;
+       cinqua = 118;
+    
+
+       safe = pirates + cinqua + hijryear7+matlob;                            
+       vista = safe % 2 + safe % 3 + safe % 7 ;
+       document.getElementById("total_mano").innerHTML = safe;
+       document.getElementById("baki_mano").innerHTML = vista;
+    fajrTime = data.data[27].timings.Fajr;
+    sunsetTime = data.data[27].timings.Sunset;
+
+        }else if( hijriday7 ==='الاثنين' && lenghts===30 && hijryear7 % 2 ===0){
+          document.getElementById("leilate_mano").innerHTML = 19;
+          pirates = 19;
+          cinqua = 118;
+       
   
-            }else if( hijriday7 ==='الاثنين' && lenghts===30 && hijryear7 % 2 ===0){
-              document.getElementById("leilate_mano").innerHTML = 19;
-              pirates = 19;
-              cinqua = 118;
-           
-      
-              safe = pirates + cinqua + hijryear7+matlob;                            
-              vista = safe % 2 + safe % 3 + safe % 7 ;
-              document.getElementById("total_mano").innerHTML = safe;
-              document.getElementById("baki_mano").innerHTML = vista;
-           fajrTime = data.data[19].timings.Fajr;
-           sunsetTime = data.data[19].timings.Sunset;
+          safe = pirates + cinqua + hijryear7+matlob;                            
+          vista = safe % 2 + safe % 3 + safe % 7 ;
+          document.getElementById("total_mano").innerHTML = safe;
+          document.getElementById("baki_mano").innerHTML = vista;
+       fajrTime = data.data[19].timings.Fajr;
+       sunsetTime = data.data[19].timings.Sunset;
+ 
+ 
+           }else if( hijriday7 ==='الثلاثاء' && lenghts===30 && hijryear7 % 2 ===0){
+             document.getElementById("leilate_mano").innerHTML = 25;
+             pirates = 25;
+             cinqua = 118;
+          
      
-     
-               }else if( hijriday7 ==='الثلاثاء' && lenghts===30 && hijryear7 % 2 ===0){
-                 document.getElementById("leilate_mano").innerHTML = 25;
-                 pirates = 25;
-                 cinqua = 118;
-              
-         
-                 safe = pirates + cinqua + hijryear7+matlob;                            
-                 vista = safe % 2 + safe % 3 + safe % 7 ;
-                 document.getElementById("total_mano").innerHTML = safe;
-                 document.getElementById("baki_mano").innerHTML = vista;
-              fajrTime = data.data[25].timings.Fajr;
-              sunsetTime = data.data[25].timings.Sunset;
+             safe = pirates + cinqua + hijryear7+matlob;                            
+             vista = safe % 2 + safe % 3 + safe % 7 ;
+             document.getElementById("total_mano").innerHTML = safe;
+             document.getElementById("baki_mano").innerHTML = vista;
+          fajrTime = data.data[25].timings.Fajr;
+          sunsetTime = data.data[25].timings.Sunset;
+    
+              }else if( hijriday7 ==='الاربعاء' && lenghts===30 && hijryear7 % 2 ===0){
+                document.getElementById("leilate_mano").innerHTML = 17;
+                pirates = 17;
+                cinqua = 118;
+             
         
-                  }else if( hijriday7 ==='الاربعاء' && lenghts===30 && hijryear7 % 2 ===0){
-                    document.getElementById("leilate_mano").innerHTML = 17;
-                    pirates = 17;
-                    cinqua = 118;
+                safe = pirates + cinqua + hijryear7+matlob;                            
+                vista = safe % 2 + safe % 3 + safe % 7 ;
+                document.getElementById("total_mano").innerHTML = safe;
+                document.getElementById("baki_mano").innerHTML = vista;
+             fajrTime = data.data[17].timings.Fajr;
+             sunsetTime = data.data[17].timings.Sunset;
+                 }else if( hijriday7 ==='الخميس' && lenghts===30 && hijryear7 % 2 ===0){
+                   document.getElementById("leilate_mano").innerHTML = 23;
+                   pirates = 23;
+                   cinqua = 118;
+                
+           
+                   safe = pirates + cinqua + hijryear7+matlob;                            
+                   vista = safe % 2 + safe % 3 + safe % 7 ;
+                   document.getElementById("total_mano").innerHTML = safe;
+                   document.getElementById("baki_mano").innerHTML = vista;
+                fajrTime = data.data[23].timings.Fajr;
+                sunsetTime = data.data[23].timings.Sunset;
+                    }else if( hijriday7 ==='الجمعة' && lenghts===30 && hijryear7 % 2 ===0){
+                      document.getElementById("leilate_mano").innerHTML = 29;
+                      pirates = 29;
+                      cinqua = 118;
+                   
+              
+                      safe = pirates + cinqua + hijryear7+matlob;                            
+                      vista = safe % 2 + safe % 3 + safe % 7 ;
+                      document.getElementById("total_mano").innerHTML = safe;
+                      document.getElementById("baki_mano").innerHTML = vista;
+                   fajrTime = data.data[29].timings.Fajr;
+                   sunsetTime = data.data[29].timings.Sunset;
+                       }else   if( hijriday7 ==='السبت' && lenghts===30 && hijryear7 % 2 ===1){
+                         document.getElementById("leilate_mano").innerHTML = 23;
+                         pirates = 23;
+                         cinqua = 13;
+                      
                  
-            
-                    safe = pirates + cinqua + hijryear7+matlob;                            
-                    vista = safe % 2 + safe % 3 + safe % 7 ;
-                    document.getElementById("total_mano").innerHTML = safe;
-                    document.getElementById("baki_mano").innerHTML = vista;
-                 fajrTime = data.data[17].timings.Fajr;
-                 sunsetTime = data.data[17].timings.Sunset;
-                     }else if( hijriday7 ==='الخميس' && lenghts===30 && hijryear7 % 2 ===0){
-                       document.getElementById("leilate_mano").innerHTML = 23;
-                       pirates = 23;
-                       cinqua = 118;
-                    
-               
-                       safe = pirates + cinqua + hijryear7+matlob;                            
-                       vista = safe % 2 + safe % 3 + safe % 7 ;
-                       document.getElementById("total_mano").innerHTML = safe;
-                       document.getElementById("baki_mano").innerHTML = vista;
-                    fajrTime = data.data[23].timings.Fajr;
-                    sunsetTime = data.data[23].timings.Sunset;
-                        }else if( hijriday7 ==='الجمعة' && lenghts===30 && hijryear7 % 2 ===0){
-                          document.getElementById("leilate_mano").innerHTML = 29;
-                          pirates = 29;
-                          cinqua = 118;
-                       
-                  
-                          safe = pirates + cinqua + hijryear7+matlob;                            
-                          vista = safe % 2 + safe % 3 + safe % 7 ;
-                          document.getElementById("total_mano").innerHTML = safe;
-                          document.getElementById("baki_mano").innerHTML = vista;
-                       fajrTime = data.data[29].timings.Fajr;
-                       sunsetTime = data.data[29].timings.Sunset;
-                           }else   if( hijriday7 ==='السبت' && lenghts===30 && hijryear7 % 2 ===1){
-                             document.getElementById("leilate_mano").innerHTML = 23;
-                             pirates = 23;
-                             cinqua = 13;
-                          
-                     
-                             safe = pirates + cinqua + hijryear7+matlob;                            
-                             vista = safe % 2 + safe % 3 + safe % 7 ;
-                             document.getElementById("total_mano").innerHTML = safe;
-                             document.getElementById("baki_mano").innerHTML = vista;
-                          fajrTime = data.data[23].timings.Fajr;
-                          sunsetTime = data.data[23].timings.Sunset;
-                    
-                              }else if( hijriday7 ==='الاحد' && lenghts===30 && hijryear7 % 2 ===1){
-                                document.getElementById("leilate_mano").innerHTML = 29;
+                         safe = pirates + cinqua + hijryear7+matlob;                            
+                         vista = safe % 2 + safe % 3 + safe % 7 ;
+                         document.getElementById("total_mano").innerHTML = safe;
+                         document.getElementById("baki_mano").innerHTML = vista;
+                      fajrTime = data.data[23].timings.Fajr;
+                      sunsetTime = data.data[23].timings.Sunset;
+                
+                          }else if( hijriday7 ==='الاحد' && lenghts===30 && hijryear7 % 2 ===1){
+                            document.getElementById("leilate_mano").innerHTML = 29;
 
-                                pirates = 29;
-                                cinqua = 13;
+                            pirates = 29;
+                            cinqua = 13;
+                         
+                    
+                            safe = pirates + cinqua + hijryear7+matlob;                            
+                            vista = safe % 2 + safe % 3 + safe % 7 ;
+                            document.getElementById("total_mano").innerHTML = safe;
+                            document.getElementById("baki_mano").innerHTML = vista;
+                         fajrTime = data.data[29].timings.Fajr;
+                         sunsetTime = data.data[29].timings.Sunset;
+                   
+                             }else if( hijriday7 ==='الاثنين' && lenghts===30 && hijryear7 % 2 ===1){
+                               document.getElementById("leilate_mano").innerHTML = 21;
+                          
+                               pirates = 21;
+                               cinqua = 13;
+                            
+                       
+                               safe = pirates + cinqua + hijryear7+matlob;                            
+                               vista = safe % 2 + safe % 3 + safe % 7 ;
+                               document.getElementById("total_mano").innerHTML = safe;
+                               document.getElementById("baki_mano").innerHTML = vista;
+                            fajrTime = data.data[21].timings.Fajr;
+                            sunsetTime = data.data[21].timings.Sunset;
+                      
+                          
+
+
+
+
+                      
+                                }else if( hijriday7 ==='الثلاثاء' && lenghts===30 && hijryear7 % 2 ===1){
+                                  document.getElementById("leilate_mano").innerHTML = 27;
+                                  pirates = 27;
+                                  cinqua = 13;
+                               
+                          
+                                  safe = pirates + cinqua + hijryear7+matlob;                            
+                                  vista = safe % 2 + safe % 3 + safe % 7 ;
+                                  document.getElementById("total_mano").innerHTML = safe;
+                                  document.getElementById("baki_mano").innerHTML = vista;
+                               fajrTime = data.data[27].timings.Fajr;
+                               sunsetTime = data.data[27].timings.Sunset;
+                                   }else if( hijriday7 ==='الاربعاء' && lenghts===30 && hijryear7 % 2 ===1){
+                                     document.getElementById("leilate_mano").innerHTML = 19;
+                                     pirates = 19;
+                                     cinqua = 13;
+                                  
                              
-                        
-                                safe = pirates + cinqua + hijryear7+matlob;                            
-                                vista = safe % 2 + safe % 3 + safe % 7 ;
-                                document.getElementById("total_mano").innerHTML = safe;
-                                document.getElementById("baki_mano").innerHTML = vista;
-                             fajrTime = data.data[29].timings.Fajr;
-                             sunsetTime = data.data[29].timings.Sunset;
-                       
-                                 }else if( hijriday7 ==='الاثنين' && lenghts===30 && hijryear7 % 2 ===1){
-                                   document.getElementById("leilate_mano").innerHTML = 21;
-                              
-                                   pirates = 21;
-                                   cinqua = 13;
+                                     safe = pirates + cinqua + hijryear7+matlob;                            
+                                     vista = safe % 2 + safe % 3 + safe % 7 ;
+                                     document.getElementById("total_mano").innerHTML = safe;
+                                     document.getElementById("baki_mano").innerHTML = vista;
+                                  fajrTime = data.data[19].timings.Fajr;
+                                  sunsetTime = data.data[19].timings.Sunset;
+                                      }else if( hijriday7 ==='الخميس' && lenghts===30 && hijryear7 % 2 ===1){
+                                        document.getElementById("leilate_mano").innerHTML = 25;
+                                        pirates = 25;
+                                        cinqua = 13;
+                                     
                                 
-                           
-                                   safe = pirates + cinqua + hijryear7+matlob;                            
-                                   vista = safe % 2 + safe % 3 + safe % 7 ;
-                                   document.getElementById("total_mano").innerHTML = safe;
-                                   document.getElementById("baki_mano").innerHTML = vista;
-                                fajrTime = data.data[21].timings.Fajr;
-                                sunsetTime = data.data[21].timings.Sunset;
-                          
-                              
-
-
-
-
-                          
-                                    }else if( hijriday7 ==='الثلاثاء' && lenghts===30 && hijryear7 % 2 ===1){
-                                      document.getElementById("leilate_mano").innerHTML = 27;
-                                      pirates = 27;
-                                      cinqua = 13;
+                                        safe = pirates + cinqua + hijryear7+matlob;                            
+                                        vista = safe % 2 + safe % 3 + safe % 7 ;
+                                        document.getElementById("total_mano").innerHTML = safe;
+                                        document.getElementById("baki_mano").innerHTML = vista;
+                                     fajrTime = data.data[25].timings.Fajr;
+                                     sunsetTime = data.data[25].timings.Sunset;
+                                         }else if( hijriday7 ==='الجمعة' && lenghts===30 && hijryear7 % 2 ===1){
+                                           document.getElementById("leilate_mano").innerHTML = 17;
+                                           pirates = 17;
+                                           cinqua = 13;
+                                        
                                    
-                              
-                                      safe = pirates + cinqua + hijryear7+matlob;                            
-                                      vista = safe % 2 + safe % 3 + safe % 7 ;
-                                      document.getElementById("total_mano").innerHTML = safe;
-                                      document.getElementById("baki_mano").innerHTML = vista;
-                                   fajrTime = data.data[27].timings.Fajr;
-                                   sunsetTime = data.data[27].timings.Sunset;
-                                       }else if( hijriday7 ==='الاربعاء' && lenghts===30 && hijryear7 % 2 ===1){
-                                         document.getElementById("leilate_mano").innerHTML = 19;
-                                         pirates = 19;
-                                         cinqua = 13;
+                                           safe = pirates + cinqua + hijryear7+matlob;                            
+                                           vista = safe % 2 + safe % 3 + safe % 7 ;
+                                           document.getElementById("total_mano").innerHTML = safe;
+                                           document.getElementById("baki_mano").innerHTML = vista;
+                                        fajrTime = data.data[17].timings.Fajr;
+                                        sunsetTime = data.data[13].timings.Sunset;
+                                            }else if( hijriday7 ==='السبت' && lenghts===29 && hijryear7 % 2 ===0){
+                                              document.getElementById("leilate_mano").innerHTML = 28;
+
+                                              pirates = 28;
+                                              cinqua = 118;
+                                           
                                       
-                                 
-                                         safe = pirates + cinqua + hijryear7+matlob;                            
-                                         vista = safe % 2 + safe % 3 + safe % 7 ;
-                                         document.getElementById("total_mano").innerHTML = safe;
-                                         document.getElementById("baki_mano").innerHTML = vista;
-                                      fajrTime = data.data[19].timings.Fajr;
-                                      sunsetTime = data.data[19].timings.Sunset;
-                                          }else if( hijriday7 ==='الخميس' && lenghts===30 && hijryear7 % 2 ===1){
-                                            document.getElementById("leilate_mano").innerHTML = 25;
-                                            pirates = 25;
-                                            cinqua = 13;
+                                              safe = pirates + cinqua + hijryear7+matlob;                            
+                                              vista = safe % 2 + safe % 3 + safe % 7 ;
+                                              document.getElementById("total_mano").innerHTML = safe;
+                                              document.getElementById("baki_mano").innerHTML = vista;
+                                           fajrTime = data.data[28].timings.Fajr;
+                                           sunsetTime = data.data[28].timings.Sunset;
+                                     
+                                               }else if( hijriday7 ==='الاحد' && lenghts===29 && hijryear7 % 2 ===0){
+                                                 document.getElementById("leilate_mano").innerHTML = 20;
+                                                 pirates = 20;
+                                                 cinqua = 118;
+                                              
                                          
-                                    
-                                            safe = pirates + cinqua + hijryear7+matlob;                            
-                                            vista = safe % 2 + safe % 3 + safe % 7 ;
-                                            document.getElementById("total_mano").innerHTML = safe;
-                                            document.getElementById("baki_mano").innerHTML = vista;
-                                         fajrTime = data.data[25].timings.Fajr;
-                                         sunsetTime = data.data[25].timings.Sunset;
-                                             }else if( hijriday7 ==='الجمعة' && lenghts===30 && hijryear7 % 2 ===1){
-                                               document.getElementById("leilate_mano").innerHTML = 17;
-                                               pirates = 17;
-                                               cinqua = 13;
+                                                 safe = pirates + cinqua + hijryear7+matlob;                            
+                                                 vista = safe % 2 + safe % 3 + safe % 7 ;
+                                                 document.getElementById("total_mano").innerHTML = safe;
+                                                 document.getElementById("baki_mano").innerHTML = vista;
+                                              fajrTime = data.data[20].timings.Fajr;
+                                              sunsetTime = data.data[20].timings.Sunset;
+                                        
+                                                  }else if( hijriday7 ==='الاثنين' && lenghts===29 && hijryear7 % 2 ===0){
+                                                    document.getElementById("leilate_mano").innerHTML = 26;
+                                                    pirates = 26;
+                                                    cinqua = 118;
+                                                 
                                             
-                                       
-                                               safe = pirates + cinqua + hijryear7+matlob;                            
-                                               vista = safe % 2 + safe % 3 + safe % 7 ;
-                                               document.getElementById("total_mano").innerHTML = safe;
-                                               document.getElementById("baki_mano").innerHTML = vista;
-                                            fajrTime = data.data[17].timings.Fajr;
-                                            sunsetTime = data.data[13].timings.Sunset;
-                                                }else if( hijriday7 ==='السبت' && lenghts===29 && hijryear7 % 2 ===0){
-                                                  document.getElementById("leilate_mano").innerHTML = 28;
-
-                                                  pirates = 28;
-                                                  cinqua = 118;
+                                                    safe = pirates + cinqua + hijryear7+matlob;                            
+                                                    vista = safe % 2 + safe % 3 + safe % 7 ;
+                                                    document.getElementById("total_mano").innerHTML = safe;
+                                                    document.getElementById("baki_mano").innerHTML = vista;
+                                                 fajrTime = data.data[26].timings.Fajr;
+                                                 sunsetTime = data.data[26].timings.Sunset;
+                                           
+                                                     }else if( hijriday7 ==='الثلاثاء' && lenghts===29 && hijryear7 % 2 ===0){
+                                                       document.getElementById("leilate_mano").innerHTML = 18;
+                                                       pirates = 18;
+                                                       cinqua = 118;
+                                                    
                                                
-                                          
-                                                  safe = pirates + cinqua + hijryear7+matlob;                            
-                                                  vista = safe % 2 + safe % 3 + safe % 7 ;
-                                                  document.getElementById("total_mano").innerHTML = safe;
-                                                  document.getElementById("baki_mano").innerHTML = vista;
-                                               fajrTime = data.data[28].timings.Fajr;
-                                               sunsetTime = data.data[28].timings.Sunset;
-                                         
-                                                   }else if( hijriday7 ==='الاحد' && lenghts===29 && hijryear7 % 2 ===0){
-                                                     document.getElementById("leilate_mano").innerHTML = 20;
-                                                     pirates = 20;
-                                                     cinqua = 118;
+                                                       safe = pirates + cinqua + hijryear7+matlob;                            
+                                                       vista = safe % 2 + safe % 3 + safe % 7 ;
+                                                       document.getElementById("total_mano").innerHTML = safe;
+                                                       document.getElementById("baki_mano").innerHTML = vista;
+                                                    fajrTime = data.data[18].timings.Fajr;
+                                                    sunsetTime = data.data[18].timings.Sunset;
+                                                        }else if( hijriday7 ==='الاربعاء' && lenghts===29 && hijryear7 % 2 ===0){
+                                                          document.getElementById("leilate_mano").innerHTML = 24;
+                                                          pirates = 24;
+                                                          cinqua = 118;
+                                                       
                                                   
-                                             
-                                                     safe = pirates + cinqua + hijryear7+matlob;                            
-                                                     vista = safe % 2 + safe % 3 + safe % 7 ;
-                                                     document.getElementById("total_mano").innerHTML = safe;
-                                                     document.getElementById("baki_mano").innerHTML = vista;
-                                                  fajrTime = data.data[20].timings.Fajr;
-                                                  sunsetTime = data.data[20].timings.Sunset;
-                                            
-                                                      }else if( hijriday7 ==='الاثنين' && lenghts===29 && hijryear7 % 2 ===0){
-                                                        document.getElementById("leilate_mano").innerHTML = 26;
-                                                        pirates = 26;
-                                                        cinqua = 118;
+                                                          safe = pirates + cinqua + hijryear7+matlob;                            
+                                                          vista = safe % 2 + safe % 3 + safe % 7 ;
+                                                          document.getElementById("total_mano").innerHTML = safe;
+                                                          document.getElementById("baki_mano").innerHTML = vista;
+                                                       fajrTime = data.data[24].timings.Fajr;
+                                                       sunsetTime = data.data[24].timings.Sunset;
+                                                           }else if( hijriday7 ==='الخميس' && lenghts===29 && hijryear7 % 2 ===0){
+                                                             document.getElementById("leilate_mano").innerHTML = 16;
+                                                             pirates = 16;
+                                                             cinqua = 118;
+                                                          
                                                      
-                                                
-                                                        safe = pirates + cinqua + hijryear7+matlob;                            
-                                                        vista = safe % 2 + safe % 3 + safe % 7 ;
-                                                        document.getElementById("total_mano").innerHTML = safe;
-                                                        document.getElementById("baki_mano").innerHTML = vista;
-                                                     fajrTime = data.data[26].timings.Fajr;
-                                                     sunsetTime = data.data[26].timings.Sunset;
-                                               
-                                                         }else if( hijriday7 ==='الثلاثاء' && lenghts===29 && hijryear7 % 2 ===0){
-                                                           document.getElementById("leilate_mano").innerHTML = 18;
-                                                           pirates = 18;
-                                                           cinqua = 118;
+                                                             safe = pirates + cinqua + hijryear7+matlob;                            
+                                                             vista = safe % 2 + safe % 3 + safe % 7 ;
+                                                             document.getElementById("total_mano").innerHTML = safe;
+                                                             document.getElementById("baki_mano").innerHTML = vista;
+                                                          fajrTime = data.data[16].timings.Fajr;
+                                                          sunsetTime = data.data[16].timings.Sunset;
+                                                              }else if( hijriday7 ==='الجمعة' && lenghts===29 && hijryear7 % 2 ===0){
+                                                                document.getElementById("leilate_mano").innerHTML = 22;
+                                                                pirates = 22;
+                                                                cinqua = 118;
+                                                             
                                                         
-                                                   
-                                                           safe = pirates + cinqua + hijryear7+matlob;                            
-                                                           vista = safe % 2 + safe % 3 + safe % 7 ;
-                                                           document.getElementById("total_mano").innerHTML = safe;
-                                                           document.getElementById("baki_mano").innerHTML = vista;
-                                                        fajrTime = data.data[18].timings.Fajr;
-                                                        sunsetTime = data.data[18].timings.Sunset;
-                                                            }else if( hijriday7 ==='الاربعاء' && lenghts===29 && hijryear7 % 2 ===0){
-                                                              document.getElementById("leilate_mano").innerHTML = 24;
-                                                              pirates = 24;
-                                                              cinqua = 118;
+                                                                safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                vista = safe % 2 + safe % 3 + safe % 7 ;
+                                                                document.getElementById("total_mano").innerHTML = safe;
+                                                                document.getElementById("baki_mano").innerHTML = vista;
+                                                             fajrTime = data.data[22].timings.Fajr;
+                                                             sunsetTime = data.data[22].timings.Sunset;
+                                                                 }else   if( hijriday7 ==='السبت' && lenghts===29 && hijryear7 % 2 ===1){
+                                                                   document.getElementById("leilate_mano").innerHTML = 16;
+                                                                   pirates = 16;
+                                                                   cinqua = 13;
+                                                                
                                                            
-                                                      
-                                                              safe = pirates + cinqua + hijryear7+matlob;                            
-                                                              vista = safe % 2 + safe % 3 + safe % 7 ;
-                                                              document.getElementById("total_mano").innerHTML = safe;
-                                                              document.getElementById("baki_mano").innerHTML = vista;
-                                                           fajrTime = data.data[24].timings.Fajr;
-                                                           sunsetTime = data.data[24].timings.Sunset;
-                                                               }else if( hijriday7 ==='الخميس' && lenghts===29 && hijryear7 % 2 ===0){
-                                                                 document.getElementById("leilate_mano").innerHTML = 16;
-                                                                 pirates = 16;
-                                                                 cinqua = 118;
+                                                                   safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                   vista = safe % 2 + safe % 3 + safe % 7 ;
+                                                                   document.getElementById("total_mano").innerHTML = safe;
+                                                                   document.getElementById("baki_mano").innerHTML = vista;
+                                                                fajrTime = data.data[16].timings.Fajr;
+                                                                sunsetTime = data.data[16].timings.Sunset;
+                                                          
+                                                                    }else if( hijriday7 ==='الاحد' && lenghts===29 && hijryear7 % 2 ===1){
+                                                                      document.getElementById("leilate_mano").innerHTML = 22;
+                                                                      pirates = 22;
+                                                                      cinqua = 13;
+                                                                   
                                                               
-                                                         
-                                                                 safe = pirates + cinqua + hijryear7+matlob;                            
-                                                                 vista = safe % 2 + safe % 3 + safe % 7 ;
-                                                                 document.getElementById("total_mano").innerHTML = safe;
-                                                                 document.getElementById("baki_mano").innerHTML = vista;
-                                                              fajrTime = data.data[16].timings.Fajr;
-                                                              sunsetTime = data.data[16].timings.Sunset;
-                                                                  }else if( hijriday7 ==='الجمعة' && lenghts===29 && hijryear7 % 2 ===0){
-                                                                    document.getElementById("leilate_mano").innerHTML = 22;
-                                                                    pirates = 22;
-                                                                    cinqua = 118;
+                                                                      safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                      vista = safe % 2 + safe % 3 + safe % 7 ;
+                                                                      document.getElementById("total_mano").innerHTML = safe;
+                                                                      document.getElementById("baki_mano").innerHTML = vista;
+                                                                   fajrTime = data.data[22].timings.Fajr;
+                                                                   sunsetTime = data.data[22].timings.Sunset;
+                                                                       }else if( hijriday7 ==='الاثنين' && lenghts===29 && hijryear7 % 2 ===1){
+                                                                         document.getElementById("leilate_mano").innerHTML = 27;
+                                                                         pirates = 27;
+                                                                         cinqua = 462;
+                                                                      
                                                                  
-                                                            
-                                                                    safe = pirates + cinqua + hijryear7+matlob;                            
-                                                                    vista = safe % 2 + safe % 3 + safe % 7 ;
-                                                                    document.getElementById("total_mano").innerHTML = safe;
-                                                                    document.getElementById("baki_mano").innerHTML = vista;
-                                                                 fajrTime = data.data[22].timings.Fajr;
-                                                                 sunsetTime = data.data[22].timings.Sunset;
-                                                                     }else   if( hijriday7 ==='السبت' && lenghts===29 && hijryear7 % 2 ===1){
-                                                                       document.getElementById("leilate_mano").innerHTML = 16;
-                                                                       pirates = 16;
-                                                                       cinqua = 13;
+                                                                         safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                         vista = safe % 2 + safe % 3 + safe % 7 ;
+                                                                         document.getElementById("total_mano").innerHTML = safe;
+                                                                         document.getElementById("baki_mano").innerHTML = vista;
+                                                                      fajrTime = data.data[24].timings.Fajr;
+                                                                      sunsetTime = data.data[24].timings.Sunset;
+                                                                
+                                                                          }else if( hijriday7 ==='الثلاثاء' && lenghts===29 && hijryear7 % 2 ===1){
+                                                                            document.getElementById("leilate_mano").innerHTML = 20;
+                                                                            pirates = 20;
+                                                                            cinqua = 13;
+                                                                         
                                                                     
-                                                               
-                                                                       safe = pirates + cinqua + hijryear7+matlob;                            
-                                                                       vista = safe % 2 + safe % 3 + safe % 7 ;
-                                                                       document.getElementById("total_mano").innerHTML = safe;
-                                                                       document.getElementById("baki_mano").innerHTML = vista;
-                                                                    fajrTime = data.data[16].timings.Fajr;
-                                                                    sunsetTime = data.data[16].timings.Sunset;
-                                                              
-                                                                        }else if( hijriday7 ==='الاحد' && lenghts===29 && hijryear7 % 2 ===1){
-                                                                          document.getElementById("leilate_mano").innerHTML = 22;
-                                                                          pirates = 22;
-                                                                          cinqua = 13;
+                                                                            safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                            vista = safe % 2 + safe % 3 + safe % 7 ;
+                                                                            document.getElementById("total_mano").innerHTML = safe;
+                                                                            document.getElementById("baki_mano").innerHTML = vista;
+                                                                         fajrTime = data.data[20].timings.Fajr;
+                                                                         sunsetTime = data.data[20].timings.Sunset;
+                                                                             }else if( hijriday7 ==='الاربعاء' && lenghts===29 && hijryear7 % 2 ===1){
+                                                                               document.getElementById("leilate_mano").innerHTML = 26;
+                                                                               pirates = 26;
+                                                                               cinqua = 13;
+                                                                            
                                                                        
-                                                                  
-                                                                          safe = pirates + cinqua + hijryear7+matlob;                            
-                                                                          vista = safe % 2 + safe % 3 + safe % 7 ;
-                                                                          document.getElementById("total_mano").innerHTML = safe;
-                                                                          document.getElementById("baki_mano").innerHTML = vista;
-                                                                       fajrTime = data.data[22].timings.Fajr;
-                                                                       sunsetTime = data.data[22].timings.Sunset;
-                                                                           }else if( hijriday7 ==='الاثنين' && lenghts===29 && hijryear7 % 2 ===1){
-                                                                             document.getElementById("leilate_mano").innerHTML = 27;
-                                                                             pirates = 27;
-                                                                             cinqua = 462;
+                                                                               safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                               vista = safe % 2 + safe % 3 + safe % 7 ;
+                                                                               document.getElementById("total_mano").innerHTML = safe;
+                                                                               document.getElementById("baki_mano").innerHTML = vista;
+                                                                            fajrTime = data.data[26].timings.Fajr;
+                                                                            sunsetTime = data.data[26].timings.Sunset;
+                                                                                }else if( hijriday7 ==='الخميس' && lenghts===29 && hijryear7 % 2 ===1){
+                                                                                  document.getElementById("leilate_mano").innerHTML = 18;
+                                                                                  pirates = 18;
+                                                                                  cinqua = 13;
+                                                                               
                                                                           
-                                                                     
-                                                                             safe = pirates + cinqua + hijryear7+matlob;                            
-                                                                             vista = safe % 2 + safe % 3 + safe % 7 ;
-                                                                             document.getElementById("total_mano").innerHTML = safe;
-                                                                             document.getElementById("baki_mano").innerHTML = vista;
-                                                                          fajrTime = data.data[24].timings.Fajr;
-                                                                          sunsetTime = data.data[24].timings.Sunset;
-                                                                    
-                                                                              }else if( hijriday7 ==='الثلاثاء' && lenghts===29 && hijryear7 % 2 ===1){
-                                                                                document.getElementById("leilate_mano").innerHTML = 20;
-                                                                                pirates = 20;
-                                                                                cinqua = 13;
+                                                                                  safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                                  vista = safe % 2 + safe % 3 + safe % 7 ;
+                                                                                  document.getElementById("total_mano").innerHTML = safe;
+                                                                                  document.getElementById("baki_mano").innerHTML = vista;
+                                                                               fajrTime = data.data[18].timings.Fajr;
+                                                                               sunsetTime = data.data[18].timings.Sunset;
+                                                                                   }else if( hijriday7 ==='الجمعة' && lenghts===29 && hijryear7 % 2 ===1){
+                                                                                     document.getElementById("leilate_mano").innerHTML = 24;
+                                                                                     pirates = 24;
+                                                                                     cinqua = 13;
+                                                                                  
                                                                              
-                                                                        
-                                                                                safe = pirates + cinqua + hijryear7+matlob;                            
-                                                                                vista = safe % 2 + safe % 3 + safe % 7 ;
-                                                                                document.getElementById("total_mano").innerHTML = safe;
-                                                                                document.getElementById("baki_mano").innerHTML = vista;
-                                                                             fajrTime = data.data[20].timings.Fajr;
-                                                                             sunsetTime = data.data[20].timings.Sunset;
-                                                                                 }else if( hijriday7 ==='الاربعاء' && lenghts===29 && hijryear7 % 2 ===1){
-                                                                                   document.getElementById("leilate_mano").innerHTML = 26;
-                                                                                   pirates = 26;
-                                                                                   cinqua = 13;
-                                                                                
-                                                                           
-                                                                                   safe = pirates + cinqua + hijryear7+matlob;                            
-                                                                                   vista = safe % 2 + safe % 3 + safe % 7 ;
-                                                                                   document.getElementById("total_mano").innerHTML = safe;
-                                                                                   document.getElementById("baki_mano").innerHTML = vista;
-                                                                                fajrTime = data.data[26].timings.Fajr;
-                                                                                sunsetTime = data.data[26].timings.Sunset;
-                                                                                    }else if( hijriday7 ==='الخميس' && lenghts===29 && hijryear7 % 2 ===1){
-                                                                                      document.getElementById("leilate_mano").innerHTML = 18;
-                                                                                      pirates = 18;
-                                                                                      cinqua = 13;
-                                                                                   
-                                                                              
-                                                                                      safe = pirates + cinqua + hijryear7+matlob;                            
-                                                                                      vista = safe % 2 + safe % 3 + safe % 7 ;
-                                                                                      document.getElementById("total_mano").innerHTML = safe;
-                                                                                      document.getElementById("baki_mano").innerHTML = vista;
-                                                                                   fajrTime = data.data[18].timings.Fajr;
-                                                                                   sunsetTime = data.data[18].timings.Sunset;
-                                                                                       }else if( hijriday7 ==='الجمعة' && lenghts===29 && hijryear7 % 2 ===1){
-                                                                                         document.getElementById("leilate_mano").innerHTML = 24;
-                                                                                         pirates = 24;
-                                                                                         cinqua = 13;
-                                                                                      
-                                                                                 
-                                                                                         safe = pirates + cinqua + hijryear7+matlob;                            
-                                                                                         vista = safe % 2 + safe % 3 + safe % 7 ;
-                                                                                         document.getElementById("total_mano").innerHTML = safe;
-                                                                                         document.getElementById("baki_mano").innerHTML = vista;
-                                                                                      fajrTime = data.data[24].timings.Fajr;
-                                                                                      sunsetTime = data.data[24].timings.Sunset;
-                                                                                          }else {
-                          console.log("what");
-                        }
-                       
+                                                                                     safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                                     vista = safe % 2 + safe % 3 + safe % 7 ;
+                                                                                     document.getElementById("total_mano").innerHTML = safe;
+                                                                                     document.getElementById("baki_mano").innerHTML = vista;
+                                                                                  fajrTime = data.data[24].timings.Fajr;
+                                                                                  sunsetTime = data.data[24].timings.Sunset;
+                                                                                      }else {
+                      console.log("what");
+                    }
+                   
 
 
 
@@ -1235,62 +1182,64 @@ document.getElementById("timezone").innerHTML=timezone1;
 
 
 
-                       
-      
-
-
-       document.getElementById("year_mano").innerHTML = hijryear1;
-       document.getElementById("first_mano").innerHTML = hijriday7;
-       document.getElementById("lenght_mano").innerHTML = lenghts;
-       console.log(data);
-
-       // جميع معاملات الحساب الخاصة بليلة القدر
-
-      //  fajrTime = data.data[0].timings.Fajr;
-      //   sunsetTime = data.data[0].timings.Sunset;
-
-       // Define the time
-       const time = fajrTime;
-       const time1 = sunsetTime;
-       const elena = 1440; //24 *60
-
-       // Split the time into hours and minutes
-       const [hours, minutes] = time.split(":");
-       const [hours1, minutes1] = time1.split(":");
-
-       // Convert the hours and minutes to minutes
-       const totalMinutes1 = parseInt(hours1) * 60 + parseInt(minutes1);
-
-       const totalMinutes = parseInt(hours) * 60 + parseInt(minutes);
-       const mins = elena - (totalMinutes1 - totalMinutes);
-       const unites = mins / 12;
-       const horse1 = totalMinutes1 + unites;
-       const horse2 = horse1 + unites;
-       const horse3 = horse2 + unites;
-       const horse4 = horse3 + unites;
-       const horse5 = horse4 + unites;
-       const horse6 = horse5 + unites;
-       const horse7 = horse6 + unites;
-       const horse8 = horse7 + unites;
-       const horse9 = horse8 + unites;
-       const horse10 = horse9 + unites;
-       const horse11 = horse10 + unites;
-       const horse12 = horse11 + unites;
-
-       //التحويل من الدقائق إلى الساعات
+                   
+  
 
 
 
 
+  document.getElementById("year_mano").innerHTML = hijryear1 ;
+   document.getElementById("first_mano").innerHTML = hijriday7;
+   document.getElementById("lenght_mano").innerHTML = lenghts;
+   console.log(data);
 
+   // جميع معاملات الحساب الخاصة بليلة القدر
+
+  //  fajrTime = data.data[0].timings.Fajr;
+  //   sunsetTime = data.data[0].timings.Sunset;
+
+   // Define the time
+   const time = fajrTime;
+   const time1 = sunsetTime;
+   const elena = 1440; //24 *60
+
+   // Split the time into hours and minutes
+   const [hours, minutes] = time.split(":");
+   const [hours1, minutes1] = time1.split(":");
+
+   // Convert the hours and minutes to minutes
+   const totalMinutes1 = parseInt(hours1) * 60 + parseInt(minutes1);
+
+   const totalMinutes = parseInt(hours) * 60 + parseInt(minutes);
+   const mins = elena - (totalMinutes1 - totalMinutes);
+   const unites = mins / 12;
+   const horse1 = totalMinutes1 + unites;
+   const horse2 = horse1 + unites;
+   const horse3 = horse2 + unites;
+   const horse4 = horse3 + unites;
+   const horse5 = horse4 + unites;
+   const horse6 = horse5 + unites;
+   const horse7 = horse6 + unites;
+   const horse8 = horse7 + unites;
+   const horse9 = horse8 + unites;
+   const horse10 = horse9 + unites;
+   const horse11 = horse10 + unites;
+   const horse12 = horse11 + unites;
+
+   //التحويل من الدقائق إلى الساعات
 
 
 
 
 
-       // best code convert minute to time
 
-       function convert(n) {
+
+
+
+
+   // best code convert minute to time
+
+   function convert(n) {
 const hour = 24;
 const maxSeconds = 60;
 
@@ -1306,95 +1255,95 @@ return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 };
 
 
-     //
+ //
 
-     document.getElementById("sa3a1").innerHTML =  convert(horse1) ;
-       document.getElementById("sa3a2").innerHTML = convert(horse2);
-       document.getElementById("sa3a3").innerHTML = convert(horse3);
-       document.getElementById("sa3a4").innerHTML = convert(horse4);
-       document.getElementById("sa3a5").innerHTML = convert(horse5);
-       document.getElementById("sa3a6").innerHTML = convert(horse6);
-       document.getElementById("sa3a7").innerHTML = convert(horse7);
-       document.getElementById("sa3a8").innerHTML = convert(horse8);
-       document.getElementById("sa3a9").innerHTML = convert(horse9);
-       document.getElementById("sa3a10").innerHTML = convert(horse10);
-       document.getElementById("sa3a11").innerHTML = convert(horse11);
-       document.getElementById("sa3a12").innerHTML = convert(horse12);
-       // document.getElementById("sa3a13").innerHTML = sunrise;
-       document.getElementById("sa3a14").innerHTML = unites;
-
-
-       
-       document.getElementById("sa3a31").innerHTML =  sunsetTime ;
-       document.getElementById("sa3a32").innerHTML = convert(horse1);
-       document.getElementById("sa3a33").innerHTML = convert(horse2);
-       document.getElementById("sa3a34").innerHTML = convert(horse3);
-       document.getElementById("sa3a35").innerHTML = convert(horse4);
-       document.getElementById("sa3a36").innerHTML = convert(horse5);
-       document.getElementById("sa3a37").innerHTML = convert(horse6);
-       document.getElementById("sa3a38").innerHTML = convert(horse7);
-       document.getElementById("sa3a39").innerHTML = convert(horse8);
-       document.getElementById("sa3a40").innerHTML = convert(horse9);
-       document.getElementById("sa3a41").innerHTML = convert(horse10);
-       document.getElementById("sa3a42").innerHTML = convert(horse11);
-
-     //
-     document.getElementById("unita_mano").innerHTML = unites ;
-
-     if (vista===0){
-      document.getElementById("time_selsabil").innerHTML = ` ${sunsetTime} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse1)}`;
-
-     }else  if  (vista===1){
-      document.getElementById("time_selsabil").innerHTML = ` ${sunsetTime} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse1)}`;
-
-     }else  if (vista===2){
-      document.getElementById("time_selsabil").innerHTML = ` ${convert(horse1)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse2)}`;
-
-     }else  if (vista===3){
-      document.getElementById("time_selsabil").innerHTML = ` ${convert(horse2)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse3)}`;
-
-     }else  if (vista===4){
-      document.getElementById("time_selsabil").innerHTML = ` ${convert(horse3)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse4)}`;
-
-     }else  if (vista===5){
-      document.getElementById("time_selsabil").innerHTML = ` ${convert(horse4)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse5)}`;
-
-     }else  if (vista===6){
-      document.getElementById("time_selsabil").innerHTML = ` ${convert(horse5)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse6)}`;
-
-     }else  if (vista===7){
-      document.getElementById("time_selsabil").innerHTML = ` ${convert(horse6)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse7)}`;
-
-     }else  if (vista===8){
-      document.getElementById("time_selsabil").innerHTML = ` ${convert(horse7)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse8)}`;
-
-     }else  if (vista===9){
-      document.getElementById("time_selsabil").innerHTML = ` ${convert(horse8)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse9)}`;
-
-     }else  if (vista===10){
-      document.getElementById("time_selsabil").innerHTML = ` ${convert(horse9)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse10)}`;
-
-     }else  if (vista===11){
-      document.getElementById("time_selsabil").innerHTML = ` ${convert(horse10)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse11)}`;
-
-     }else  if (vista===12){
-      document.getElementById("time_selsabil").innerHTML = ` ${convert(horse11)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${fajrTime}`;
-
-     }else if (vista > 12) {
-      document.getElementById("time_selsabil").innerHTML = ` ${convert(horse11)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${fajrTime}`;
-
-     }else{
-      console.log("tasnimsaid my children i love you forever");
-     }
+ document.getElementById("sa3a1").innerHTML =  convert(horse1) ;
+   document.getElementById("sa3a2").innerHTML = convert(horse2);
+   document.getElementById("sa3a3").innerHTML = convert(horse3);
+   document.getElementById("sa3a4").innerHTML = convert(horse4);
+   document.getElementById("sa3a5").innerHTML = convert(horse5);
+   document.getElementById("sa3a6").innerHTML = convert(horse6);
+   document.getElementById("sa3a7").innerHTML = convert(horse7);
+   document.getElementById("sa3a8").innerHTML = convert(horse8);
+   document.getElementById("sa3a9").innerHTML = convert(horse9);
+   document.getElementById("sa3a10").innerHTML = convert(horse10);
+   document.getElementById("sa3a11").innerHTML = convert(horse11);
+   document.getElementById("sa3a12").innerHTML = convert(horse12);
+   // document.getElementById("sa3a13").innerHTML = sunrise;
+   document.getElementById("sa3a14").innerHTML = unites;
 
 
    
+   document.getElementById("sa3a31").innerHTML =  sunsetTime ;
+   document.getElementById("sa3a32").innerHTML = convert(horse1);
+   document.getElementById("sa3a33").innerHTML = convert(horse2);
+   document.getElementById("sa3a34").innerHTML = convert(horse3);
+   document.getElementById("sa3a35").innerHTML = convert(horse4);
+   document.getElementById("sa3a36").innerHTML = convert(horse5);
+   document.getElementById("sa3a37").innerHTML = convert(horse6);
+   document.getElementById("sa3a38").innerHTML = convert(horse7);
+   document.getElementById("sa3a39").innerHTML = convert(horse8);
+   document.getElementById("sa3a40").innerHTML = convert(horse9);
+   document.getElementById("sa3a41").innerHTML = convert(horse10);
+   document.getElementById("sa3a42").innerHTML = convert(horse11);
+
+ //
+ document.getElementById("unita_mano").innerHTML = unites ;
+
+ if (vista===0){
+  document.getElementById("time_selsabil").innerHTML = ` ${sunsetTime} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse1)}`;
+
+ }else  if  (vista===1){
+  document.getElementById("time_selsabil").innerHTML = ` ${sunsetTime} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse1)}`;
+
+ }else  if (vista===2){
+  document.getElementById("time_selsabil").innerHTML = ` ${convert(horse1)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse2)}`;
+
+ }else  if (vista===3){
+  document.getElementById("time_selsabil").innerHTML = ` ${convert(horse2)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse3)}`;
+
+ }else  if (vista===4){
+  document.getElementById("time_selsabil").innerHTML = ` ${convert(horse3)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse4)}`;
+
+ }else  if (vista===5){
+  document.getElementById("time_selsabil").innerHTML = ` ${convert(horse4)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse5)}`;
+
+ }else  if (vista===6){
+  document.getElementById("time_selsabil").innerHTML = ` ${convert(horse5)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse6)}`;
+
+ }else  if (vista===7){
+  document.getElementById("time_selsabil").innerHTML = ` ${convert(horse6)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse7)}`;
+
+ }else  if (vista===8){
+  document.getElementById("time_selsabil").innerHTML = ` ${convert(horse7)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse8)}`;
+
+ }else  if (vista===9){
+  document.getElementById("time_selsabil").innerHTML = ` ${convert(horse8)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse9)}`;
+
+ }else  if (vista===10){
+  document.getElementById("time_selsabil").innerHTML = ` ${convert(horse9)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse10)}`;
+
+ }else  if (vista===11){
+  document.getElementById("time_selsabil").innerHTML = ` ${convert(horse10)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${convert(horse11)}`;
+
+ }else  if (vista===12){
+  document.getElementById("time_selsabil").innerHTML = ` ${convert(horse11)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${fajrTime}`;
+
+ }else if (vista > 12) {
+  document.getElementById("time_selsabil").innerHTML = ` ${convert(horse11)} &nbsp;&nbsp; إلى &nbsp;&nbsp;${fajrTime}`;
+
+ }else{
+  console.log("tasnimsaid my children i love you forever");
+ }
 
 
-   
 
 
-    
+
+
+
+
+
 
 
 
@@ -1407,63 +1356,42 @@ return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 
 
 
-     }).catch((error) => {
-       console.error("Error:", error);
-     });
+ }).catch((error) => {
+   console.error("Error:", error);
+ });
 
 
-    }
+}
 
 
- //End api calendar
+//End api calendar
 
- // Get user's current location using Geolocation API
- navigator.geolocation.watchPosition(
-   (position) => {
-      latitude = position.coords.latitude;
-      longitude = position.coords.longitude;
-      // const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+// Get user's current location using Geolocation API
+navigator.geolocation.watchPosition(
+(position) => {
+  latitude = position.coords.latitude;
+  longitude = position.coords.longitude;
+  // const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-     // Display latitude and longitude on the web page
-     document.getElementById("latitude").innerHTML = latitude;
-     document.getElementById("longitude").innerHTML = longitude;
-   // document.getElementById("timezone").innerHTML = timezone;
-     // Call getPrayerTimes function to get prayer times for the user's location
-   
-    //  getPrayerTimes1(latitude, longitude);
-   },
-   (error) => {
-     console.error(error);
-   }
- );
+ // Display latitude and longitude on the web page
+ document.getElementById("latitude").innerHTML = latitude;
+ document.getElementById("longitude").innerHTML = longitude;
+// document.getElementById("timezone").innerHTML = timezone;
+ // Call getPrayerTimes function to get prayer times for the user's location
 
-
-
+//  getPrayerTimes1(latitude, longitude);
+},
+(error) => {
+ console.error(error);
+}
+);
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
-    <script src="app.js"></script>
-
-
-
-
-    
-
-</body>
+    </script>
+    <script src="./app.js"></script>
+  </body>
 </html>
