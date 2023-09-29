@@ -671,7 +671,7 @@ function countWord() {
 
 
 
-const url = `http://api.aladhan.com/v1/hijriCalendar/1446/9?latitude=36.44156&longitude=6.26721&method=$2`;
+const url = `http://api.aladhan.com/v1/hijriCalendar/1446/9?latitude=${latitude}&longitude=${longitude}&method=${meth}`;
 
 
 fetch(url).then(response=>{return response.json()}).then(data =>{
