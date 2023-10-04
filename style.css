@@ -49,8 +49,8 @@ aside{
 
 .textarea1{
 
-height:200px;
-width : 200px;
+height: 100px;
+ width: 280px;
 color : white;
 background : black ;
 border: 1px solid blue;
@@ -236,19 +236,7 @@ left: 10px;
 
 
 
-.crestal{
-    font-size: smaller !important;
-    position: relative !important;
-    /* left: -10px !important; */
-    justify-content: center;
 
-}
-.videos{
-
-    background-color: blue;
-    color: aliceblue;
-    font-size: x-large;
-}
 
 
 /* 
