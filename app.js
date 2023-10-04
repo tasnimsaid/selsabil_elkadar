@@ -575,7 +575,7 @@ document.getElementById("timezone").innerHTML=timezone1;
         cinqua = 118;
      
 
-        safe = pirates + cinqua + hijryear7+matlob;                            
+         safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
         vista = safe % 2 + safe % 3 + safe % 7 ;
         document.getElementById("total_mano").innerHTML = safe;
         document.getElementById("baki_mano").innerHTML = vista;
@@ -589,7 +589,7 @@ document.getElementById("timezone").innerHTML=timezone1;
            cinqua = 118;
         
    
-           safe = pirates + cinqua + hijryear7+matlob;                            
+            safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
            vista = safe % 2 + safe % 3 + safe % 7 ;
            document.getElementById("total_mano").innerHTML = safe;
            document.getElementById("baki_mano").innerHTML = vista;
@@ -602,7 +602,7 @@ document.getElementById("timezone").innerHTML=timezone1;
               cinqua = 118;
            
       
-              safe = pirates + cinqua + hijryear7+matlob;                            
+               safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
               vista = safe % 2 + safe % 3 + safe % 7 ;
               document.getElementById("total_mano").innerHTML = safe;
               document.getElementById("baki_mano").innerHTML = vista;
@@ -616,7 +616,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                  cinqua = 118;
               
          
-                 safe = pirates + cinqua + hijryear7+matlob;                            
+                  safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                  vista = safe % 2 + safe % 3 + safe % 7 ;
                  document.getElementById("total_mano").innerHTML = safe;
                  document.getElementById("baki_mano").innerHTML = vista;
@@ -629,7 +629,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                     cinqua = 118;
                  
             
-                    safe = pirates + cinqua + hijryear7+matlob;                            
+                     safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                     vista = safe % 2 + safe % 3 + safe % 7 ;
                     document.getElementById("total_mano").innerHTML = safe;
                     document.getElementById("baki_mano").innerHTML = vista;
@@ -641,7 +641,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                        cinqua = 118;
                     
                
-                       safe = pirates + cinqua + hijryear7+matlob;                            
+                        safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                        vista = safe % 2 + safe % 3 + safe % 7 ;
                        document.getElementById("total_mano").innerHTML = safe;
                        document.getElementById("baki_mano").innerHTML = vista;
@@ -653,7 +653,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                           cinqua = 118;
                        
                   
-                          safe = pirates + cinqua + hijryear7+matlob;                            
+                           safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                           vista = safe % 2 + safe % 3 + safe % 7 ;
                           document.getElementById("total_mano").innerHTML = safe;
                           document.getElementById("baki_mano").innerHTML = vista;
@@ -665,7 +665,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                              cinqua = 13;
                           
                      
-                             safe = pirates + cinqua + hijryear7+matlob;                            
+                              safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                              vista = safe % 2 + safe % 3 + safe % 7 ;
                              document.getElementById("total_mano").innerHTML = safe;
                              document.getElementById("baki_mano").innerHTML = vista;
@@ -679,7 +679,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                 cinqua = 13;
                              
                         
-                                safe = pirates + cinqua + hijryear7+matlob;                            
+                                 safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                 vista = safe % 2 + safe % 3 + safe % 7 ;
                                 document.getElementById("total_mano").innerHTML = safe;
                                 document.getElementById("baki_mano").innerHTML = vista;
@@ -693,7 +693,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                    cinqua = 13;
                                 
                            
-                                   safe = pirates + cinqua + hijryear7+matlob;                            
+                                    safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                    vista = safe % 2 + safe % 3 + safe % 7 ;
                                    document.getElementById("total_mano").innerHTML = safe;
                                    document.getElementById("baki_mano").innerHTML = vista;
@@ -712,7 +712,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                       cinqua = 13;
                                    
                               
-                                      safe = pirates + cinqua + hijryear7+matlob;                            
+                                       safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                       vista = safe % 2 + safe % 3 + safe % 7 ;
                                       document.getElementById("total_mano").innerHTML = safe;
                                       document.getElementById("baki_mano").innerHTML = vista;
@@ -724,7 +724,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                          cinqua = 13;
                                       
                                  
-                                         safe = pirates + cinqua + hijryear7+matlob;                            
+                                          safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                          vista = safe % 2 + safe % 3 + safe % 7 ;
                                          document.getElementById("total_mano").innerHTML = safe;
                                          document.getElementById("baki_mano").innerHTML = vista;
@@ -736,7 +736,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                             cinqua = 13;
                                          
                                     
-                                            safe = pirates + cinqua + hijryear7+matlob;                            
+                                             safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                             vista = safe % 2 + safe % 3 + safe % 7 ;
                                             document.getElementById("total_mano").innerHTML = safe;
                                             document.getElementById("baki_mano").innerHTML = vista;
@@ -748,7 +748,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                                cinqua = 13;
                                             
                                        
-                                               safe = pirates + cinqua + hijryear7+matlob;                            
+                                                safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                                vista = safe % 2 + safe % 3 + safe % 7 ;
                                                document.getElementById("total_mano").innerHTML = safe;
                                                document.getElementById("baki_mano").innerHTML = vista;
@@ -761,7 +761,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                                   cinqua = 118;
                                                
                                           
-                                                  safe = pirates + cinqua + hijryear7+matlob;                            
+                                                   safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                                   vista = safe % 2 + safe % 3 + safe % 7 ;
                                                   document.getElementById("total_mano").innerHTML = safe;
                                                   document.getElementById("baki_mano").innerHTML = vista;
@@ -774,7 +774,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                                      cinqua = 118;
                                                   
                                              
-                                                     safe = pirates + cinqua + hijryear7+matlob;                            
+                                                      safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                                      vista = safe % 2 + safe % 3 + safe % 7 ;
                                                      document.getElementById("total_mano").innerHTML = safe;
                                                      document.getElementById("baki_mano").innerHTML = vista;
@@ -787,7 +787,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                                         cinqua = 118;
                                                      
                                                 
-                                                        safe = pirates + cinqua + hijryear7+matlob;                            
+                                                         safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                                         vista = safe % 2 + safe % 3 + safe % 7 ;
                                                         document.getElementById("total_mano").innerHTML = safe;
                                                         document.getElementById("baki_mano").innerHTML = vista;
@@ -800,7 +800,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                                            cinqua = 118;
                                                         
                                                    
-                                                           safe = pirates + cinqua + hijryear7+matlob;                            
+                                                            safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                                            vista = safe % 2 + safe % 3 + safe % 7 ;
                                                            document.getElementById("total_mano").innerHTML = safe;
                                                            document.getElementById("baki_mano").innerHTML = vista;
@@ -812,7 +812,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                                               cinqua = 118;
                                                            
                                                       
-                                                              safe = pirates + cinqua + hijryear7+matlob;                            
+                                                               safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                                               vista = safe % 2 + safe % 3 + safe % 7 ;
                                                               document.getElementById("total_mano").innerHTML = safe;
                                                               document.getElementById("baki_mano").innerHTML = vista;
@@ -824,7 +824,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                                                  cinqua = 118;
                                                               
                                                          
-                                                                 safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                  safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                                                  vista = safe % 2 + safe % 3 + safe % 7 ;
                                                                  document.getElementById("total_mano").innerHTML = safe;
                                                                  document.getElementById("baki_mano").innerHTML = vista;
@@ -836,7 +836,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                                                     cinqua = 118;
                                                                  
                                                             
-                                                                    safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                     safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                                                     vista = safe % 2 + safe % 3 + safe % 7 ;
                                                                     document.getElementById("total_mano").innerHTML = safe;
                                                                     document.getElementById("baki_mano").innerHTML = vista;
@@ -848,7 +848,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                                                        cinqua = 13;
                                                                     
                                                                
-                                                                       safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                        safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                                                        vista = safe % 2 + safe % 3 + safe % 7 ;
                                                                        document.getElementById("total_mano").innerHTML = safe;
                                                                        document.getElementById("baki_mano").innerHTML = vista;
@@ -861,7 +861,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                                                           cinqua = 13;
                                                                        
                                                                   
-                                                                          safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                           safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                                                           vista = safe % 2 + safe % 3 + safe % 7 ;
                                                                           document.getElementById("total_mano").innerHTML = safe;
                                                                           document.getElementById("baki_mano").innerHTML = vista;
@@ -873,7 +873,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                                                              cinqua = 462;
                                                                           
                                                                      
-                                                                             safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                              safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                                                              vista = safe % 2 + safe % 3 + safe % 7 ;
                                                                              document.getElementById("total_mano").innerHTML = safe;
                                                                              document.getElementById("baki_mano").innerHTML = vista;
@@ -886,7 +886,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                                                                 cinqua = 13;
                                                                              
                                                                         
-                                                                                safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                                 safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                                                                 vista = safe % 2 + safe % 3 + safe % 7 ;
                                                                                 document.getElementById("total_mano").innerHTML = safe;
                                                                                 document.getElementById("baki_mano").innerHTML = vista;
@@ -898,7 +898,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                                                                    cinqua = 13;
                                                                                 
                                                                            
-                                                                                   safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                                    safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                                                                    vista = safe % 2 + safe % 3 + safe % 7 ;
                                                                                    document.getElementById("total_mano").innerHTML = safe;
                                                                                    document.getElementById("baki_mano").innerHTML = vista;
@@ -910,7 +910,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                                                                       cinqua = 13;
                                                                                    
                                                                               
-                                                                                      safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                                       safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                                                                       vista = safe % 2 + safe % 3 + safe % 7 ;
                                                                                       document.getElementById("total_mano").innerHTML = safe;
                                                                                       document.getElementById("baki_mano").innerHTML = vista;
@@ -922,7 +922,7 @@ document.getElementById("timezone").innerHTML=timezone1;
                                                                                          cinqua = 13;
                                                                                       
                                                                                  
-                                                                                         safe = pirates + cinqua + hijryear7+matlob;                            
+                                                                                          safe = parseInt(pirates + cinqua + hijryear7+matlob)-500;                             
                                                                                          vista = safe % 2 + safe % 3 + safe % 7 ;
                                                                                          document.getElementById("total_mano").innerHTML = safe;
                                                                                          document.getElementById("baki_mano").innerHTML = vista;
@@ -992,7 +992,9 @@ document.getElementById("timezone").innerHTML=timezone1;
        //التحويل من الدقائق إلى الساعات
 
 
-
+function countwords(){
+	console.log(frederico);
+}
 
 
 
