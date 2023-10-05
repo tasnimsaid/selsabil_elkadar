@@ -223,13 +223,14 @@ position: relative;
 left: 10px;
     color: rgb(250, 255, 252);
     background-color: blue;
+    top: 20px;
 
 }
 
 
 .signe{
     position: relative;
-    top: -150px;
+    top: -170px;
     left: 200px;
     width: 50%;
 }

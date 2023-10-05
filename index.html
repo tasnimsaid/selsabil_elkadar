@@ -22,12 +22,12 @@
     <aside>
         <form>
     
-            <textarea dir="rtl" placeholder ="  أكتب إسمك + إسم أمك(ي)  مثال : عادل حنان " class ="textarea1" id="text" onkeypress="countWord() "  ></textarea>
+            <textarea dir="rtl" placeholder ="  أكتب إسمك + إسم أمك(ي)  مثال : عادل حنان " class ="textarea1" id="text" onkeypress="countWord(),countWords() "  ></textarea>
           
         </form> 
 <div class = "h_class">
 
-    <h1 class="eljafr"> قاعدة  حساب  الجفر  </h1>
+    <h4 class="eljafr"> قاعدة  حساب  الجفر  </h4>
 </div>
        
 
@@ -73,9 +73,12 @@
         
         <p dir="rtl" style="text-align:center"><span style="background-color:#ecf0f1">&nbsp;بما أن أول رمضان :&nbsp; &nbsp;<span id="first_mano"></span></span></p>
         
+        <p dir="rtl" style="text-align:center"><span style="background-color:#ecf0f1">&nbsp; الموافق ليوم  (    :&nbsp; &nbsp;<span id="first_manos"></span></span></p>
+        
         <p dir="rtl" style="text-align:center"><span style="background-color:#ecf0f1">&nbsp;طول الشهر :&nbsp; &nbsp;<span id="lenght_mano"></span></span></p>
         
         <p dir="rtl" style="text-align:center"><span style="background-color:#ecf0f1">&nbsp;ليلة القدر سوف تكون بإذن الله&nbsp; في ليلة :&nbsp; &nbsp;&nbsp;<span id="leilate_mano"></span></span></p>
+        <p dir="rtl" style="text-align:center"><span style="background-color:#ecf0f1">&nbsp; الموافقة لليلة:;&nbsp;<span id="leilate_manos"></span></span></p>
         
         <p dir="rtl" style="text-align:center"><span style="background-color:#94df1b">&nbsp;المجموع :&nbsp; &nbsp;<span id="total_mano"></span></span></p>
         
@@ -129,6 +132,7 @@
     <!-- <p>Date (Hijri): <span id="hijriDate"></span></p>
     <p>gregorianDate: <span id="gregorianDate"></span></p> -->
     <p>  بداية أول رمضان : <span id="firstholidays"></span></p>
+    <p>بداية أول رمضان بالميلادي : <span id="firstholidays1"></span></p>
 
   </div>
   <div >
@@ -149,7 +153,8 @@
     <p>Imsak Time: <span id="Imsak"></span></p>
     <p>Midnight Time: <span id="Midnight"></span></p>
     <!-- rouhani -->
-    <p>  بداية أول رمضان : <span id="firstholidays"></span></p>
+    <p>    بالبداية أول رمضان : <span id="firstholidays"></span></p>
+    <p> 
 
     <!-- <p>الساعة الروحانية الأولى : <span id="render1"></span></p> -->
     
