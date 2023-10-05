@@ -1121,9 +1121,7 @@ return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 
 
 
-     }).catch((error) => {
-       console.error("Error:", error);
-     });
+     })
 
 
     }
