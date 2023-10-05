@@ -459,9 +459,9 @@ async function getPrayerTimes1(meth) {
    // ADHAN PRAYER TIMES API endpoint
    const url = `http://api.aladhan.com/v1/hijriCalendar/1945/9?latitude=${latitude}&longitude=${longitude}&method=${meth}`;
 
-  await fetch(url)
-     .then((response) => response.json())
-     .then((data) => {
+   const response = await fetch(url);
+  const data = await response.json();
+     
       
        // Extract prayer times from the response
        
@@ -991,9 +991,6 @@ document.getElementById("timezone").innerHTML=timezone1;
        //التحويل من الدقائق إلى الساعات
 
 
-function countwords(){
-	console.log(frederico);
-}
 
 
 
