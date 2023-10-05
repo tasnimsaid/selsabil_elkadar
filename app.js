@@ -470,8 +470,8 @@ countWord()
 //   const data = await response.json();
   
 
-
-  await fetch('http://api.aladhan.com/v1/hijriCalendar/1445/9?latitude=${latitude}&longitude=${longitude}&method=${meth}')
+const url = "http://api.aladhan.com/v1/hijriCalendar/1445/9?latitude=${latitude}&longitude=${longitude}&method=${meth} " ;
+  await fetch(url)
      .then((response) => response.json())
      .then((data) => {
       
