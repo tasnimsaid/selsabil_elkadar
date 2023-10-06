@@ -1,10 +1,10 @@
 //api calendar
-  async function getPrayerTimes1(meth) {
+  function getPrayerTimes1(meth) {
 
   
    const url = `http://api.aladhan.com/v1/hijriCalendar/1445/9?latitude=${latitude}&longitude=${longitude}&method=${meth}`;
 
-  await fetch(url)
+  fetch(url)
      .then((response) => response.json())
      .then((data) => {
       
@@ -819,9 +819,7 @@ return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 
 
 
-     }).catch((error) => {
-       console.error("Error:", error);
-     });
+     })
 
 
     }
@@ -843,9 +841,6 @@ return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
      // Call getPrayerTimes function to get prayer times for the user's location
    
      getPrayerTimes1(latitude, longitude);
-   },
-   (error) => {
-     console.error(error);
    }
  );
 
