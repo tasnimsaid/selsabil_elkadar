@@ -1,3 +1,26 @@
+
+var matlob;
+var  vista;
+
+var fajrTime;
+
+var sunsetTime;
+var pirates;
+var cinqua;
+var tasnimsaid;
+var safe;
+var meth;
+var latitude, longitude;
+
+var manos;
+var manos1;
+var manos2;
+var manos3;
+var manos4;
+var manos5;
+var forday12, day12, month12, year12, manos ;
+
+
 //api calendar
 function getPrayerTimes1(meth) {
 
@@ -842,16 +865,12 @@ return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
    // document.getElementById("timezone").innerHTML = timezone;
      // Call getPrayerTimes function to get prayer times for the user's location
    
-     getPrayerTimes1(latitude, longitude);
+     getPrayerTimes1();
    },
    (error) => {
      console.error(error);
    }
  );
-
-
-
-
 
 
 
