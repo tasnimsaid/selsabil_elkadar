@@ -22,12 +22,12 @@ var forday12, day12, month12, year12, manos ;
 
 
 //api calendar
-function getPrayerTimes1(meth) {
+async function getPrayerTimes1(meth) {
 
-  
- //  const url = `http://api.aladhan.com/v1/hijriCalendar/1444/9?latitude=${latitude}&longitude=${longitude}&method=${meth}`;
+  // const url = `http://api.aladhan.com/v1/hijriCalendar/1444/9?latitude=${latitude}&longitude=${longitude}&method=${meth}`;
+ 
 
- fetch(`http://api.aladhan.com/v1/hijriCalendar/1444/9?latitude=${latitude}&longitude=${longitude}&method=${meth}`)
+await  fetch(`http://api.aladhan.com/v1/hijriCalendar/1444/9?latitude=${latitude}&longitude=${longitude}&method=${meth}`)
      .then((response) => response.json())
      .then((data) => {
       
@@ -887,6 +887,7 @@ livemap =  navigator.geolocation.watchPosition(
    }
  );
 
+//  navigator.geolocation.clearWatch(livemap);
 
 
 

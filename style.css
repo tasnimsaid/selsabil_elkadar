@@ -48,7 +48,9 @@ aside{
 
 
 .textarea1{
-
+position: absolute;
+top: 60px;
+left: 280px;
 height: 100px;
  width: 280px;
 color : white;
@@ -75,8 +77,15 @@ border-radius: 7px;
     
     
     }
+    .spark{
+        position: relative;
+        left: 50px;
+    }
 
 .best{
+    position: relative;
+    top: 20px;
+    left: 75px;
     margin : auto;
     bottom : 50px;
     padding : 3px;
