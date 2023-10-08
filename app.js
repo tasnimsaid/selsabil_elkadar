@@ -843,7 +843,7 @@ return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 
 
      }).catch((error) => {
-       console.error("Error:", error);
+       console.log(error);
      });
 
 
@@ -851,10 +851,18 @@ return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 
 
  //End api calendar
+ // app.js
+
+  // handle the response
+// });
+var livemap;
 
  // Get user's current location using Geolocation API
- navigator.geolocation.watchPosition(
-   (position) => {
+
+//  https://www.openstreetmap.org/export/embed.html?bbox=${latitude},${longitude}&;layer=mapnik
+
+livemap =  navigator.geolocation.watchPosition(
+   position => {
       latitude = position.coords.latitude;
       longitude = position.coords.longitude;
       // const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -862,13 +870,20 @@ return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
      // Display latitude and longitude on the web page
      document.getElementById("latitude").innerHTML = latitude;
      document.getElementById("longitude").innerHTML = longitude;
+
    // document.getElementById("timezone").innerHTML = timezone;
      // Call getPrayerTimes function to get prayer times for the user's location
+     //
+
+     document.getElementById("myposition").innerHTML = ` <iframe width="300px" height="250px" src="https://www.openstreetmap.org/export/embed.html?bbox=${longitude},${latitude}&;layer=mapnik" ></iframe> `;
+    
+
+     //
    
      getPrayerTimes1();
    },
-   (error) => {
-     console.error(error);
+   error => {
+     console.log(error);
    }
  );
 
