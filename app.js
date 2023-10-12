@@ -855,37 +855,37 @@ return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 
   // handle the response
 // });
-var livemap;
+// var livemap;
 
- // Get user's current location using Geolocation API
+//  // Get user's current location using Geolocation API
 
-//  https://www.openstreetmap.org/export/embed.html?bbox=${latitude},${longitude}&;layer=mapnik
+// //  https://www.openstreetmap.org/export/embed.html?bbox=${latitude},${longitude}&;layer=mapnik
 
-livemap =  navigator.geolocation.watchPosition(
-   position => {
-      latitude = position.coords.latitude;
-      longitude = position.coords.longitude;
-      // const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+// livemap =  navigator.geolocation.watchPosition(
+//    position => {
+//       latitude = position.coords.latitude;
+//       longitude = position.coords.longitude;
+//       // const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+// console.log(position);
+//      // Display latitude and longitude on the web page
+//      document.getElementById("latitude").innerHTML = latitude;
+//      document.getElementById("longitude").innerHTML = longitude;
 
-     // Display latitude and longitude on the web page
-     document.getElementById("latitude").innerHTML = latitude;
-     document.getElementById("longitude").innerHTML = longitude;
+//    // document.getElementById("timezone").innerHTML = timezone;
+//      // Call getPrayerTimes function to get prayer times for the user's location
+//      //
 
-   // document.getElementById("timezone").innerHTML = timezone;
-     // Call getPrayerTimes function to get prayer times for the user's location
-     //
-
-     document.getElementById("myposition").innerHTML = ` <iframe width="300px" height="250px" src="https://www.openstreetmap.org/export/embed.html?bbox=${longitude},${latitude}&;layer=mapnik" ></iframe> `;
+//      document.getElementById("myposition").innerHTML = ` <iframe width="300px" height="250px" src="https://www.openstreetmap.org/export/embed.html?bbox=${longitude},${latitude}&;layer=mapnik&marker=${longitude},${latitude}&marker-icon=./map-marker-free-download-png.webp/marker.png" ></iframe> `;
     
 
-     //
+//      //
    
-     getPrayerTimes1();
-   },
-   error => {
-     console.log(error);
-   }
- );
+//      getPrayerTimes1();
+//    },
+//    error => {
+//      console.log(error);
+//    }
+//  );
 
 //  navigator.geolocation.clearWatch(livemap);
 
@@ -897,7 +897,67 @@ livemap =  navigator.geolocation.watchPosition(
 
 
 
+var livemap;
+livemap = navigator.geolocation.watchPosition(function(position) {
+  // Get the latitude and longitude
+  latitude = position.coords.latitude;
+   longitude = position.coords.longitude;
 
+  // Print the length and width by hand
+  console.log("Latitude:", latitude);
+  console.log("Longitude:", longitude);
+  
+        // const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+console.log(position);
+     // Display latitude and longitude on the web page
+     document.getElementById("latitude").innerHTML = latitude;
+     document.getElementById("longitude").innerHTML = longitude;
+
+   // document.getElementById("timezone").innerHTML = timezone;
+     // Call getPrayerTimes function to get prayer times for the user's location
+     //
+
+     document.getElementById("myposition").innerHTML = ` <iframe width="300px" height="250px" src="https://www.openstreetmap.org/export/embed.html?bbox=${longitude},${latitude}&;layer=mapnik&marker=${longitude},${latitude}&marker-icon=./map-marker-free-download-png.webp/marker.png" ></iframe> `;
+    
+
+     //
+   
+     getPrayerTimes1();
+
+  // Enter the IP
+  var url = "https://nominatim.openstreetmap.org/reverse?lat=" + latitude + "&lon=" + longitude;
+
+  // Convert the XML data to JSON
+  var xhr = new XMLHttpRequest();
+  let response;
+  
+  function loadXml(){
+    xhr.onreadystatechange = function (){
+    if (this.status === 200 && this.readyState==4 ) {
+      response = this.responseXML.documentElement;
+    //   var json = new DOMParser().parseFromString(xml, "text/xml").documentElement.textContent;
+    console.log(response);
+      // Type the data on the console
+//       
+document.getElementById("residential").innerHTML = response.getElementsByTagName("residential")[0].childNodes[0].nodeValue;
+document.getElementById("city_district").innerHTML = response.getElementsByTagName("city_district")[0].childNodes[0].nodeValue;
+document.getElementById("town").innerHTML = response.getElementsByTagName("town")[0].childNodes[0].nodeValue;
+document.getElementById("state").innerHTML = response.getElementsByTagName("state")[0].childNodes[0].nodeValue;
+document.getElementById("ISO3166").innerHTML = response.getElementsByTagName("ISO3166-2-lvl4")[0].childNodes[0].nodeValue;
+document.getElementById("postcode").innerHTML = response.getElementsByTagName("postcode")[0].childNodes[0].nodeValue;
+document.getElementById("country").innerHTML = response.getElementsByTagName("country")[0].childNodes[0].nodeValue;
+document.getElementById("country_code").innerHTML = response.getElementsByTagName("country_code")[0].childNodes[0].nodeValue;
+document.getElementById("result").innerHTML = response.getElementsByTagName("result")[0].childNodes[0].nodeValue;
+
+
+
+    }
+  }
+  };
+  xhr.open("GET", "https://nominatim.openstreetmap.org/reverse?lat=" + latitude + "&lon=" + longitude ,true );
+  xhr.send();
+  loadXml()
+});
 
 
 

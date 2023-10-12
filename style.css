@@ -50,7 +50,7 @@ aside{
 .textarea1{
 position: absolute;
 top: 60px;
-left: 280px;
+left: 320px;
 height: 100px;
  width: 280px;
 color : white;
@@ -77,11 +77,26 @@ border-radius: 7px;
     
     
     }
-    .spark{
+    .sp{
         position: relative;
-        left: 50px;
+        left: 60px;
     }
-
+    .falastine{
+        border: 1px solid rgb(20, 27, 8);
+        text-decoration: none;
+        color: aliceblue;
+        background: rgb(10, 14, 206);
+        padding: 5px;
+        border-radius: 7px;
+        font-size: large;
+        float: right;
+       margin-left: 50px;
+    }
+    .falastine:hover{
+        color: rgb(10, 14, 206);
+        background:aliceblue ; 
+        border: 2px solid rgb(47, 213, 255);
+    }
 .best{
     position: relative;
     top: 20px;
@@ -268,3 +283,19 @@ left: 10px;
 
 
 END select */
+
+
+.residence{
+    position: absolute;
+    color: aliceblue;
+    top: 430px;
+    font-size: medium;
+
+}
+
+.resulta{
+    position: absolute;
+    color: rgb(0, 0, 0);
+    font-size: large;
+    background-color: rgb(161, 161, 168);
+}
