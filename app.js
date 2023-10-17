@@ -20,15 +20,17 @@ var manos4;
 var manos5;
 var forday12, day12, month12, year12, manos ;
 
-
+var method = document.getElementById("mys1");
 //api calendar
-async function getPrayerTimes1(meth) {
+async function getPrayerTimes1() {
+  value = method.value ;
 
   // const url = `http://api.aladhan.com/v1/hijriCalendar/1444/9?latitude=${latitude}&longitude=${longitude}&method=${meth}`;
  
+const url = `http://api.aladhan.com/v1/hijriCalendar?latitude=${latitude}&longitude=${longitude}&method= "+ value +" &1444/9`;
+//const url = `https://api.aladhan.com/v1/hijriCalendar/1444/9?latitude=${latitude}&longitude=${longitude}&method=${meth}&mode: 'no-cors'`;
 
-
-await  fetch(`http://api.aladhan.com/v1/hijriCalendar/1444/9?latitude=${latitude}&longitude=${longitude}&method=${meth}&mode:`%20%27no-cors%27``)
+await  fetch(url)
      .then((response) => response.json())
      .then((data) => {
       
@@ -43,32 +45,8 @@ await  fetch(`http://api.aladhan.com/v1/hijriCalendar/1444/9?latitude=${latitude
       
        
     
-   var myselected = document.querySelector("#mys1");
+ 
 
-myselected.innerHTML=`  
-<option selected >${data.data[0].meta.method.name}</option> 
-<option value="1">University of Islamic Sciences, Karachi</option>
-<option value="2">Islamic Society of North America</option>
-<option value="3">Muslim World League</option>
-<option value="4">Umm Al-Qura University, Makkah</option>
-<option value="5">Egyptian General Authority of Survey</option>
-<option value="6"></option>
-<option value="7">
-  Institute of Geophysics, University of Tehran
-</option>
-<option value="8">Gulf Region</option>
-<option value="9">Kuwait</option>
-<option value="10">Qatar</option>
-<option value="11">Majlis Ugama Islam Singapura, Singapore</option>
-<option value="12">Union Organization islamic de France</option>
-<option value="13">Diyanet İşleri Başkanlığı, Turkey</option>
-<option value="14">
-  Spiritual Administration of Muslims of Russia
-</option>
-<option value="15">
-  Moonsighting Committee Worldwide (also requires shafaq parameter)
-</option>
-<option value="16">Dubai (unofficial)</option>`;
 
 
 const timezone1 = data.data[0].meta.timezone;
@@ -918,7 +896,7 @@ console.log(position);
      // Call getPrayerTimes function to get prayer times for the user's location
      //
 
-     document.getElementById("myposition").innerHTML = ` <iframe width="300px" height="250px" src="https://www.openstreetmap.org/export/embed.html?bbox=${longitude},${latitude}&;layer=mapnik&marker=${longitude},${latitude}&marker-icon=./map-marker-free-download-png.webp/marker.png" ></iframe> `;
+    // document.getElementById("myposition").innerHTML = ` <iframe width="300px" height="250px" src="https://www.openstreetmap.org/export/embed.html?bbox=${longitude},${latitude}&;layer=mapnik&marker=${longitude},${latitude}&marker-icon=./map-marker-free-download-png.webp/marker.png" ></iframe> `;
     
 
      //
@@ -959,6 +937,11 @@ document.getElementById("result").innerHTML = response.getElementsByTagName("res
   xhr.send();
   loadXml()
 });
+
+
+
+
+
 
 
 
