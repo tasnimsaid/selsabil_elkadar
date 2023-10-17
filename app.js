@@ -28,7 +28,7 @@ async function getPrayerTimes1(meth) {
  
 
 
-await  fetch(`http://api.aladhan.com/v1/hijriCalendar/1444/9?latitude=${latitude}&longitude=${longitude}&method=${meth}&mode:%20%27no-cors%27`)
+await  fetch(`http://api.aladhan.com/v1/hijriCalendar/1444/9?latitude=${latitude}&longitude=${longitude}&method=${meth}&mode:`%20%27no-cors%27``)
      .then((response) => response.json())
      .then((data) => {
       
