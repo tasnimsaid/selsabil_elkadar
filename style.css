@@ -48,9 +48,9 @@ aside{
 
 
 .textarea1{
-position: absolute;
-top: 60px;
-left: 320px;
+position: relative;
+top: -200px;
+left: 650px;
 height: 100px;
  width: 280px;
 color : white;
@@ -82,6 +82,8 @@ border-radius: 7px;
         left: 60px;
     }
     .falastine{
+        position: relative;
+        right:100px;
         border: 1px solid rgb(20, 27, 8);
         text-decoration: none;
         color: aliceblue;
@@ -89,8 +91,10 @@ border-radius: 7px;
         padding: 5px;
         border-radius: 7px;
         font-size: large;
-        float: right;
-       margin-left: 50px;
+         
+       margin-left: 120px; 
+
+
     }
     .falastine:hover{
         color: rgb(10, 14, 206);
@@ -124,7 +128,9 @@ td{
 
 
 table{
-
+    position: relative;
+    left: 100px;
+  top: -100px;
     justify-content:center;
     justify-items:center;
     font-size:large;
@@ -230,8 +236,8 @@ table{
 
 .ouihda{
     position: relative;
-   top: -580px;
-   left: 700px;
+   top: -680px;
+  left: 850px;
 }
 
 .minoa{
@@ -254,7 +260,7 @@ left: 10px;
 
 .signe{
     position: relative;
-    top: -170px;
+    top: -210px;
     left: 200px;
     width: 50%;
 }
