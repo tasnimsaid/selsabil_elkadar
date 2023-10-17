@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./selsabil-elkadar.png" type="image/x-icon">
    <link rel="stylesheet" href="style.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
 
 
     <title>ليلة القدر & الساعة الروحانية</title>
@@ -20,6 +22,7 @@
         <div>
             <a class="falastine" href="http://" target="_blank">فيديو تعريفي </a>
             <a class="falastine" href="https://www.youtube.com/watch?v=In4OGjMqsW8" target="_blank"> >الفيديو الذي إعتمدت عليه لصناعة هذا البرنامج </a>
+            <a class="falastine" href="https://tasnimsaid.github.io/tahsine/" target="_blank"> >الساعة الروحانية للتحصين  </a>
 
          
             
@@ -30,14 +33,24 @@
     <aside>
        <!-- test i phrame position -->
 
-       <div id="myposition">
-        <!-- <iframe width="300px" height="250px" src="https://www.openstreetmap.org/export/embed.html?bbox=${latitude},${longitude}&;layer=mapnik" ></iframe> -->
-    </div>
+       <div id="map" style="height: 250px; width: 300px;"></div><br>
 
 <div class="resulta">
-    Address :) =<span id="result"></span><br>
+    Address :)=<span id="result"></span><br>
+    <hr>
+<div>
+ Description :)=<span id="description"></span>
+
+</div>
+    
+   
 </div>
 
+ 
+
+  
+
+<br>
     <!-- END test i phrame position -->
     
      
@@ -97,7 +110,31 @@
 
 
 <div id="select-container">
-  <select class="select-box" name="" id="mys1" onchange=" getPrayerTimes1(value)"> </select>
+  <select class="select-box" name="" id="mys1" onchange=" getPrayerTimes1(value)"> 
+    <option selected >${data.data[0].meta.method.name}</option> 
+    <option value="1">University of Islamic Sciences, Karachi</option>
+    <option value="2">Islamic Society of North America</option>
+    <option value="3">Muslim World League</option>
+    <option value="4">Umm Al-Qura University, Makkah</option>
+    <option value="5">Egyptian General Authority of Survey</option>
+    <option value="6"></option>
+    <option value="7">
+      Institute of Geophysics, University of Tehran
+    </option>
+    <option value="8">Gulf Region</option>
+    <option value="9">Kuwait</option>
+    <option value="10">Qatar</option>
+    <option value="11">Majlis Ugama Islam Singapura, Singapore</option>
+    <option value="12">Union Organization islamic de France</option>
+    <option value="13">Diyanet İşleri Başkanlığı, Turkey</option>
+    <option value="14">
+      Spiritual Administration of Muslims of Russia
+    </option>
+    <option value="15">
+      Moonsighting Committee Worldwide (also requires shafaq parameter)
+    </option>
+    <option value="16">Dubai (unofficial)</option>
+  </select>
 </div>
  
  
@@ -108,7 +145,7 @@
 
 
   <div class="colorada">
-    <h1>Your Geolocation API</h1>
+    <h2>Your Geolocation</h2>
     <p>Time Zone : <span id="timezone"></span></p>
 
     <p>Latitude: <span id="latitude"></span></p>
@@ -122,6 +159,19 @@
 
 <div class="residence">
 
+    <div id="user-information-detected"></div>
+    <p>IP Address : <span id="ip"></span></p>
+    <p>Browser :<span id="browser"></span></p>
+<p>OS :<span id="os"></span></p>
+<p>Version :<span id="version"></span></p>
+<p>Layout : <span id="layout"></span></p>
+
+    <p>Type : <span id="Type"></span></p>
+    <p>Effective Type : <span id="Effective"></span></p>
+    <p>Downlink : <span id="Downlink"></span></p>
+    <p>RTT : <span id="RTT"></span></p>
+    <p>Save data : <span id="Save data"></span></p>
+    
 Residential = <span id="residential"></span><br>
 City_District = <span id="city_district"></span><br>
 Town = <span id="town"></span><br>
@@ -130,6 +180,10 @@ ISO3166-2-lvl4 = <span id="ISO3166"></span><br>
 Postcode = <span id="postcode"></span><br>
 Country = <span id="country"></span><br>
 Country_code =<span id="country_code"></span><br>
+
+
+
+
 </div>
 
 
@@ -625,12 +679,366 @@ function countWord() {
 
 
 </script>
+
+
+
+<!-- script neon openstreet map -->
+
+
+
+<script>
+  // Get the current location from the browser
+  function getLocation() {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+  }
+
+  // Create a map and add a tile layer
+  async function createMap() {
+    // Get the latitude and longitude from the location object
+    let location = await getLocation();
+    let latitude = location.coords.latitude;
+    let longitude = location.coords.longitude;
+
+    // Log the coordinates to the console
+    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+
+    // Create a Leaflet map object and set the view to the current coordinates
+    let map = L.map('map').setView([latitude, longitude], 13);
+
+    // Add a tile layer to the map
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data © <a href="^5^">OpenStreetMap</a> contributors, <a href="^6^">CC-BY-SA</a>, Imagery © <a href="^7^">CloudMade</a>',
+      maxZoom: 18
+    }).addTo(map);
+
+    return map;
+  }
+
+  // Add a custom marker to the map
+  function addMarker(map) {
+    // Use a local image file as a custom marker icon in Leaflet.js
+    let customIcon = L.icon({
+      iconUrl: './customicon.png', // The relative URL of the image file
+      iconSize: [50, 50], // The size of the icon
+      iconAnchor: [25, 50], // The point of the icon which will correspond to the marker's location
+      popupAnchor: [0, -50] // The point from which the popup should open relative to the iconAnchor
+    });
+
+    // Add a marker with the custom icon to the map
+    L.marker(map.getCenter(), {icon: customIcon}).addTo(map)
+      .bindPopup('This is your location.')
+      .openPopup();
+  }
+
+  // Call the functions to create and update the map
+  createMap().then(map => {
+    addMarker(map);
+  });
+</script>
+
+  <!--END script neon openstreet map -->  
+
+
+
+
+
+
+
     <script src="app.js"></script>
 
 
 
 
+
+
+
+
+
+<!-- 
+    <script>
+
+
+        // Get the user's platform and browser information
+    const platform = navigator.userAgentData.platform;
+    const browser = navigator.userAgentData.brands[0].brand;
     
+    // Check if the platform is Android, iOS, Apple, or Prime OS
+    let platformName = '';
+    if (platform.includes('Android')) {
+      platformName = 'Android';
+    } else if (platform.includes('iPhone')) {
+      platformName = 'iPhone';
+    } else if (platform.includes('Mac')) {
+      platformName = 'Apple';
+    } else if (platform.includes('Windows')) {
+      platformName = 'Windows';
+    } else if (platform.includes('FreeBSD')) {
+      platformName = 'FreeBSD';
+    }else if (platform.includes('OpenBSD')) {
+      platformName = 'OpenBSD';
+    }else if (platform.includes('Windows Phone')) {
+      platformName = 'Windows Phone';
+    }else if (platform.includes('')) {
+      platformName = '';
+    }else if (platform.includes('iOS')) {
+      platformName = 'iOS';
+    }else if (platform.includes('NetBSD')) {
+      platformName = 'NetBSD';
+    }else if (platform.includes('DragonFly BSD')) {
+      platformName = 'DragonFly BSD';
+    }else if (platform.includes('Haiku')) {
+      platformName = 'Haiku';
+    }else if (platform.includes('AROS')) {
+      platformName = 'AROS';
+    }else if (platform.includes('Plan 9')) {
+      platformName = 'Plan 9';
+    }else if (platform.includes('KaiOS')) {
+      platformName = 'KaiOS';
+    }else if (platform.includes('VxWorks')) {
+      platformName = 'VxWorks';
+    }else if (platform.includes('µC/OS')) {
+      platformName = 'µC/OS';
+    }else if (platform.includes('FreeRTOS')) {
+      platformName = 'FreeRTOS';
+    }else if (platform.includes('macOS')) {
+      platformName = 'macOS';
+    }else if (platform.includes('Linux')) {
+      platformName = 'Linux';
+    }else if (platform.includes('Chrome OS')) {
+      platformName = 'Chrome OS';
+    }else if (platform.includes('Prime OS')) {
+      platformName = 'Prime OS';
+    }else if (platform.includes('')) {
+      platformName = '';
+    }else if (platform.includes('')) {
+      platformName = '';
+    }else if (platform.includes('')) {
+      platformName = '';
+    }else if (platform.includes('')) {
+      platformName = '';
+    }else {
+      platformName = 'Other';
+    }
+    
+    // Check if the browser is Chrome, Firefox, Safari, or Edge
+    let browserName = '';
+    if (browser === 'Google Chrome') {
+      browserName = 'Chrome';
+    } else if (browser === 'Mozilla Firefox') {
+      browserName = 'Firefox';
+    } else if (browser === 'Apple Safari') {
+      browserName = 'Safari';
+    } else if (browser === 'Microsoft Edge') {
+      browserName = 'Edge';
+    } else if (browser === 'Opera') {
+      browserName = 'Opera';
+    } else if (browser === 'Brave') {
+      browserName = 'Brave';
+    } else if (browser === 'Vivaldi') {
+      browserName = 'Vivaldi';
+    } else if (browser === 'DuckDuckGo') {
+      browserName = 'DuckDuckGo';
+    } else if (browser === 'Chromium') {
+      browserName = 'Chromium';
+    } else if (browser === 'Epic') {
+      browserName = 'Epic';
+    } else if (browser === 'Avast Secure Browser') {
+      browserName = 'Avast Secure Browser';
+    } else if (browser === '  Secure Browser by Avira') {
+      browserName = '  Secure Browser by Avira';
+    } else if (browser === ' Comodo Dragon') {
+      browserName = ' Comodo Dragon';
+    } else if (browser === 'UR Browser') {
+      browserName = 'UR Browser';
+    } else if (browser === 'Tor Browser') {
+      browserName = 'Tor Browser';
+    } else if (browser === 'Epic Privacy Browser') {
+      browserName = 'Epic Privacy Browser';
+    } else if (browser === 'Maxthon') {
+      browserName = 'Maxthon';
+    } else if (browser === 'Pale Moon') {
+      browserName = 'Pale Moon';
+    } else if (browser === 'K-Meleon') {
+      browserName = 'K-Meleon';
+    } else if (browser === 'SeaMonkey') {
+      browserName = 'SeaMonkey';
+    } else if (browser === 'Slim Browser') {
+      browserName = 'Slim Browser';
+    } else if (browser === 'Lunascape') {
+      browserName = 'Lunascape';
+    } else if (browser === 'Cyberfox') {
+      browserName = 'Cyberfox';
+    } else if (browser === 'Waterfox') {
+      browserName = 'Waterfox';
+    } else if (browser === 'Iridium') {
+      browserName = 'Iridium';
+    } else if (browser === 'GNUzilla') {
+      browserName = 'GNUzilla';
+    } else if (browser === 'Iceweasel') {
+      browserName = 'Iceweasel';
+    } else if (browser === 'Basilisk') {
+      browserName = 'Basilisk';
+    } else if (browser === 'Gossamer') {
+      browserName = 'Gossamer';
+    } else if (browser === 'Beam') {
+      browserName = 'Beam';
+    } else if (browser === 'Cent Browser') {
+      browserName = 'Cent Browser';
+    } else if (browser === 'Slimjet') {
+      browserName = 'Slimjet';
+    } else if (browser === 'Torch Browser') {
+      browserName = 'Torch Browser';
+    } else if (browser === 'Puffin Browser') {
+      browserName = 'Puffin Browser';
+    } else if (browser === 'UC Browser') {
+      browserName = 'UC Browser';
+    } else if (browser === 'Dolphin Browser') {
+      browserName = 'Dolphin Browser';
+    } else if (browser === 'Kiwi Browser') {
+      browserName = 'Kiwi Browser';
+    } else if (browser === 'Opera GX') {
+      browserName = 'Opera GX';
+    } else if (browser === 'Vivaldi GX') {
+      browserName = 'Vivaldi GX';
+    } else if (browser === 'Brave GX') {
+      browserName = 'Brave GX';
+    } else if (browser === 'Gaming Browser') {
+      browserName = 'Gaming Browser';
+    } else if (browser === 'UR Browser Gaming') {
+      browserName = 'UR Browser Gaming';
+    } else if (browser === 'Puffin Browser Pro') {
+      browserName = 'Puffin Browser Pro';
+    } else if (browser === ' UC Browser Turbo') {
+      browserName = ' UC Browser Turbo';
+    } else if (browser === ' Dolphin Browser Plus') {
+      browserName = ' Dolphin Browser Plus';
+    } else if (browser === 'Kiwi Browser Pro') {
+      browserName = 'Kiwi Browser Pro';
+    } else if (browser === ' Opera Neon') {
+      browserName = ' Opera Neon';
+    } else if (browser === 'Vivaldi Snapshot') {
+      browserName = 'Vivaldi Snapshot';
+    } else if (browser === 'Brave Nightly') {
+      browserName = 'Brave Nightly';
+    } else if (browser === 'Firefox Nightly') {
+      browserName = 'Firefox Nightly';
+    } else if (browser === 'Edge Canary') {
+      browserName = 'Edge Canary';
+    } else if (browser === 'Chrome Dev') {
+      browserName = 'Chrome Dev';
+    } else if (browser === 'Chromium Dev') {
+      browserName = 'Chromium Dev';
+    } else if (browser === 'Epic Dev') {
+      browserName = 'Epic Dev';
+    } else if (browser === 'Vivaldi Dev') {
+      browserName = 'Vivaldi Dev';
+    } else if (browser === 'Brave Beta') {
+      browserName = 'Brave Beta';
+    } else if (browser === 'Firefox Beta') {
+      browserName = 'Firefox Beta';
+    } else if (browser === 'Edge Beta') {
+      browserName = 'Edge Beta';
+    } else if (browser === 'Chrome Beta') {
+      browserName = 'Chrome Beta';
+    } else if (browser === 'Chromium Beta') {
+      browserName = 'Chromium Beta';
+    } else if (browser === 'Epic Beta') {
+      browserName = 'Epic Beta';
+    } else if (browser === 'Vivaldi Beta') {
+      browserName = 'Vivaldi Beta';
+    } else if (browser === ' Brave') {
+      browserName = ' Brave';
+    } else if (browser === 'Firefox') {
+      browserName = 'Firefox';
+    } else if (browser === 'Edge') {
+      browserName = 'Edge';
+    } else if (browser === 'Chrome') {
+      browserName = 'Chrome';
+    } else if (browser === 'Chromium') {
+      browserName = 'Chromium';
+    } else if (browser === 'Epic') {
+      browserName = 'Epic';
+    } else if (browser === 'Vivaldi') {
+      browserName = 'Vivaldi';
+    } else {
+      browserName = 'Other';
+    }
+    
+    
+    
+      // Print the user information to the page
+      document.getElementById('user-information-detected').innerHTML = `
+        Platform OS : ${platformName} <br>
+        Browser Details : ${browserName}`;
+    
+    </script> -->
+
+
+
+
+
+
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script>
+    // A function to fetch and print the IP address from a given URL
+    function fetchAndPrint(url) {
+      $.get(url, function(data) {
+        // Print the IP address to the console
+        console.log("Your IP address is: " + data);
+        document.getElementById("ip").innerHTML = data ; 
+      });
+    }
+    
+    // A function to get and print the connection information
+    function getConnectionInfo() {
+      // Get the connection object from the navigator
+      var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      // Check if the connection object exists
+      if (connection) {
+        // Print the connection information to the console
+        console.log("Your connection information is:");
+        console.log("Type: " + connection.type); // This is the new line that prints the connection type
+        console.log("Effective type: " + connection.effectiveType);
+        console.log("Downlink: " + connection.downlink + " Mbps");
+        console.log("RTT: " + connection.rtt + " ms");
+        console.log("Save data: " + connection.saveData);
+        document.getElementById("Type").innerHTML = connection.type;
+        document.getElementById("Effective").innerHTML = connection.effectiveType ;
+        document.getElementById("Downlink").innerHTML = connection.downlink + " Mbps";
+        document.getElementById("RTT").innerHTML = connection.rtt + " ms";
+        document.getElementById("Save data").innerHTML = connection.saveData;
+      } else {
+        // Print a message if the connection object is not supported
+        console.log("Sorry, your browser does not support the connection API.");
+      }
+    }
+    
+    // Call the functions when the document is ready
+    $(document).ready(function() {
+      fetchAndPrint("https://ifconfig.me/ip");
+      getConnectionInfo();
+    });
+    
+    
+    
+    
+    </script>
+
+<!-- browse script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.6/platform.min.js" integrity="sha512-eYPrm8TgYWg3aa6tvSRZjN4v0Z9Qx69q3RhfSj+Mf89QqwOMqmwSlsVqfp4N8NVAcZe/YeUhh9x/nM2CAOp6cA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    console.log(platform);
+    document.getElementById("browser").innerText = platform.name ;
+    document.getElementById("layout").innerText = platform.layout ;
+    document.getElementById("description").innerText = platform.description ;
+    document.getElementById("version").innerText = platform.version ;
+    document.getElementById("os").innerText = platform.os ;
+</script>
+<!--END browse script -->
 
 </body>
 </html>
