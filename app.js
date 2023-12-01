@@ -1008,6 +1008,53 @@ document.getElementById("result").innerHTML = response.getElementsByTagName("res
 
 
 
+    // A function to fetch and print the IP address from a given URL
+    function fetchAndPrint(url) {
+      $.get(url, function(data) {
+        // Print the IP address to the console
+        console.log("Your IP address is: " + data);
+        document.getElementById("ip").innerHTML = data ; 
+      });
+    }
+    
+    // A function to get and print the connection information
+    function getConnectionInfo() {
+      // Get the connection object from the navigator
+      var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      // Check if the connection object exists
+      if (connection) {
+        // Print the connection information to the console
+        console.log("Your connection information is:");
+        console.log("Type: " + connection.type); // This is the new line that prints the connection type
+        console.log("Effective type: " + connection.effectiveType);
+        console.log("Downlink: " + connection.downlink + " Mbps");
+        console.log("RTT: " + connection.rtt + " ms");
+        console.log("Save data: " + connection.saveData);
+        document.getElementById("Type").innerHTML = connection.type;
+        document.getElementById("Effective").innerHTML = connection.effectiveType ;
+        document.getElementById("Downlink").innerHTML = connection.downlink + " Mbps";
+        document.getElementById("RTT").innerHTML = connection.rtt + " ms";
+        document.getElementById("Save data").innerHTML = connection.saveData;
+      } else {
+        // Print a message if the connection object is not supported
+        console.log("Sorry, your browser does not support the connection API.");
+      }
+    }
+    
+    // Call the functions when the document is ready
+    $(document).ready(function() {
+      fetchAndPrint("https://ifconfig.me/ip");
+      getConnectionInfo();
+    });
+    
+    
+    console.log(platform);
+    document.getElementById("browser").innerText = platform.name ;
+    document.getElementById("layout").innerText = platform.layout ;
+    document.getElementById("description").innerText = platform.description ;
+    document.getElementById("version").innerText = platform.version ;
+    document.getElementById("os").innerText = platform.os ;
+
 
 
 
