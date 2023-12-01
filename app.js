@@ -51,6 +51,7 @@ var forday12, day12, month12, year12, manos ;
     }).addTo(map);
 
     return map;
+
   }
 
   // Add a custom marker to the map
@@ -76,6 +77,131 @@ var forday12, day12, month12, year12, manos ;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  var livemap;
+  livemap = navigator.geolocation.watchPosition(function(position) {
+    // Get the latitude and longitude
+    latitude = position.coords.latitude;
+     longitude = position.coords.longitude;
+     getPrayerTimes1();
+    // Print the length and width by hand
+    console.log("Latitude:", latitude);
+    console.log("Longitude:", longitude);
+    
+          // const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  console.log(position);
+       // Display latitude and longitude on the web page
+       document.getElementById("latitude").innerHTML = latitude;
+       document.getElementById("longitude").innerHTML = longitude;
+  
+     // document.getElementById("timezone").innerHTML = timezone;
+       // Call getPrayerTimes function to get prayer times for the user's location
+       //
+  
+      // document.getElementById("myposition").innerHTML = ` <iframe width="300px" height="250px" src="https://www.openstreetmap.org/export/embed.html?bbox=${longitude},${latitude}&;layer=mapnik&marker=${longitude},${latitude}&marker-icon=./map-marker-free-download-png.webp/marker.png" ></iframe> `;
+      
+  
+       //
+     
+     
+  
+    // Enter the IP
+    var url = "https://nominatim.openstreetmap.org/reverse?lat=" + latitude + "&lon=" + longitude;
+  
+    // Convert the XML data to JSON
+    var xhr = new XMLHttpRequest();
+    let response;
+    
+    function loadXml(){
+      xhr.onreadystatechange = function (){
+      if (this.status === 200 && this.readyState==4 ) {
+        response = this.responseXML.documentElement;
+      //   var json = new DOMParser().parseFromString(xml, "text/xml").documentElement.textContent;
+      console.log(response);
+        // Type the data on the console
+  //       
+  document.getElementById("residential").innerHTML = response.getElementsByTagName("residential")[0].childNodes[0].nodeValue;
+  document.getElementById("city_district").innerHTML = response.getElementsByTagName("city_district")[0].childNodes[0].nodeValue;
+  document.getElementById("town").innerHTML = response.getElementsByTagName("town")[0].childNodes[0].nodeValue;
+  document.getElementById("state").innerHTML = response.getElementsByTagName("state")[0].childNodes[0].nodeValue;
+  document.getElementById("ISO3166").innerHTML = response.getElementsByTagName("ISO3166-2-lvl4")[0].childNodes[0].nodeValue;
+  document.getElementById("postcode").innerHTML = response.getElementsByTagName("postcode")[0].childNodes[0].nodeValue;
+  document.getElementById("country").innerHTML = response.getElementsByTagName("country")[0].childNodes[0].nodeValue;
+  document.getElementById("country_code").innerHTML = response.getElementsByTagName("country_code")[0].childNodes[0].nodeValue;
+  document.getElementById("result").innerHTML = response.getElementsByTagName("result")[0].childNodes[0].nodeValue;
+  
+  
+  
+      }
+    }
+    };
+    xhr.open("GET", "https://nominatim.openstreetmap.org/reverse?lat=" + latitude + "&lon=" + longitude ,true );
+    xhr.send();
+    loadXml()
+  });
+  
+  
+  
+      // A function to fetch and print the IP address from a given URL
+      function fetchAndPrint(url) {
+        $.get(url, function(data) {
+          // Print the IP address to the console
+          console.log("Your IP address is: " + data);
+          document.getElementById("ip").innerHTML = data ; 
+        });
+      }
+      
+      // A function to get and print the connection information
+      function getConnectionInfo() {
+        // Get the connection object from the navigator
+        var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        // Check if the connection object exists
+        if (connection) {
+          // Print the connection information to the console
+          console.log("Your connection information is:");
+          console.log("Type: " + connection.type); // This is the new line that prints the connection type
+          console.log("Effective type: " + connection.effectiveType);
+          console.log("Downlink: " + connection.downlink + " Mbps");
+          console.log("RTT: " + connection.rtt + " ms");
+          console.log("Save data: " + connection.saveData);
+          document.getElementById("Type").innerHTML = connection.type;
+          document.getElementById("Effective").innerHTML = connection.effectiveType ;
+          document.getElementById("Downlink").innerHTML = connection.downlink + " Mbps";
+          document.getElementById("RTT").innerHTML = connection.rtt + " ms";
+          document.getElementById("Save data").innerHTML = connection.saveData;
+        } else {
+          // Print a message if the connection object is not supported
+          console.log("Sorry, your browser does not support the connection API.");
+        }
+      }
+      
+      // Call the functions when the document is ready
+      $(document).ready(function() {
+        fetchAndPrint("https://ifconfig.me/ip");
+        getConnectionInfo();
+      });
+      
+      
+      console.log(platform);
+      document.getElementById("browser").innerText = platform.name ;
+      document.getElementById("layout").innerText = platform.layout ;
+      document.getElementById("description").innerText = platform.description ;
+      document.getElementById("version").innerText = platform.version ;
+      document.getElementById("os").innerText = platform.os ;
+  
 
 
 
@@ -940,120 +1066,6 @@ return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 
 
 
-
-
-
-
-var livemap;
-livemap = navigator.geolocation.watchPosition(function(position) {
-  // Get the latitude and longitude
-  latitude = position.coords.latitude;
-   longitude = position.coords.longitude;
-
-  // Print the length and width by hand
-  console.log("Latitude:", latitude);
-  console.log("Longitude:", longitude);
-  
-        // const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-console.log(position);
-     // Display latitude and longitude on the web page
-     document.getElementById("latitude").innerHTML = latitude;
-     document.getElementById("longitude").innerHTML = longitude;
-
-   // document.getElementById("timezone").innerHTML = timezone;
-     // Call getPrayerTimes function to get prayer times for the user's location
-     //
-
-    // document.getElementById("myposition").innerHTML = ` <iframe width="300px" height="250px" src="https://www.openstreetmap.org/export/embed.html?bbox=${longitude},${latitude}&;layer=mapnik&marker=${longitude},${latitude}&marker-icon=./map-marker-free-download-png.webp/marker.png" ></iframe> `;
-    
-
-     //
-   
-     getPrayerTimes1();
-
-  // Enter the IP
-  var url = "https://nominatim.openstreetmap.org/reverse?lat=" + latitude + "&lon=" + longitude;
-
-  // Convert the XML data to JSON
-  var xhr = new XMLHttpRequest();
-  let response;
-  
-  function loadXml(){
-    xhr.onreadystatechange = function (){
-    if (this.status === 200 && this.readyState==4 ) {
-      response = this.responseXML.documentElement;
-    //   var json = new DOMParser().parseFromString(xml, "text/xml").documentElement.textContent;
-    console.log(response);
-      // Type the data on the console
-//       
-document.getElementById("residential").innerHTML = response.getElementsByTagName("residential")[0].childNodes[0].nodeValue;
-document.getElementById("city_district").innerHTML = response.getElementsByTagName("city_district")[0].childNodes[0].nodeValue;
-document.getElementById("town").innerHTML = response.getElementsByTagName("town")[0].childNodes[0].nodeValue;
-document.getElementById("state").innerHTML = response.getElementsByTagName("state")[0].childNodes[0].nodeValue;
-document.getElementById("ISO3166").innerHTML = response.getElementsByTagName("ISO3166-2-lvl4")[0].childNodes[0].nodeValue;
-document.getElementById("postcode").innerHTML = response.getElementsByTagName("postcode")[0].childNodes[0].nodeValue;
-document.getElementById("country").innerHTML = response.getElementsByTagName("country")[0].childNodes[0].nodeValue;
-document.getElementById("country_code").innerHTML = response.getElementsByTagName("country_code")[0].childNodes[0].nodeValue;
-document.getElementById("result").innerHTML = response.getElementsByTagName("result")[0].childNodes[0].nodeValue;
-
-
-
-    }
-  }
-  };
-  xhr.open("GET", "https://nominatim.openstreetmap.org/reverse?lat=" + latitude + "&lon=" + longitude ,true );
-  xhr.send();
-  loadXml()
-});
-
-
-
-    // A function to fetch and print the IP address from a given URL
-    function fetchAndPrint(url) {
-      $.get(url, function(data) {
-        // Print the IP address to the console
-        console.log("Your IP address is: " + data);
-        document.getElementById("ip").innerHTML = data ; 
-      });
-    }
-    
-    // A function to get and print the connection information
-    function getConnectionInfo() {
-      // Get the connection object from the navigator
-      var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-      // Check if the connection object exists
-      if (connection) {
-        // Print the connection information to the console
-        console.log("Your connection information is:");
-        console.log("Type: " + connection.type); // This is the new line that prints the connection type
-        console.log("Effective type: " + connection.effectiveType);
-        console.log("Downlink: " + connection.downlink + " Mbps");
-        console.log("RTT: " + connection.rtt + " ms");
-        console.log("Save data: " + connection.saveData);
-        document.getElementById("Type").innerHTML = connection.type;
-        document.getElementById("Effective").innerHTML = connection.effectiveType ;
-        document.getElementById("Downlink").innerHTML = connection.downlink + " Mbps";
-        document.getElementById("RTT").innerHTML = connection.rtt + " ms";
-        document.getElementById("Save data").innerHTML = connection.saveData;
-      } else {
-        // Print a message if the connection object is not supported
-        console.log("Sorry, your browser does not support the connection API.");
-      }
-    }
-    
-    // Call the functions when the document is ready
-    $(document).ready(function() {
-      fetchAndPrint("https://ifconfig.me/ip");
-      getConnectionInfo();
-    });
-    
-    
-    console.log(platform);
-    document.getElementById("browser").innerText = platform.name ;
-    document.getElementById("layout").innerText = platform.layout ;
-    document.getElementById("description").innerText = platform.description ;
-    document.getElementById("version").innerText = platform.version ;
-    document.getElementById("os").innerText = platform.os ;
 
 
 
