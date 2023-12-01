@@ -24,6 +24,278 @@ var forday12, day12, month12, year12, manos ;
 
 
 
+
+function countWord() {
+
+  let text = document.getElementById("text").value;
+
+
+  
+    
+  
+    
+  
+  let Counter1 = 0 ;
+  let Counter2 = 0 ;
+  let Counter3 = 0 ;
+  let Counter4 = 0 ;
+  
+   let Counter5 = 0 ;
+   let Counter6 = 0 ;
+  let Counter7 = 0 ;
+  let Counter8 = 0 ;
+  let Counter9 = 0 ;
+  let Counter10 = 0 ;
+  
+  let Counter11 = 0 ;
+  let Counter12 = 0 ;
+  let Counter13 = 0 ;
+  let Counter14 = 0 ;
+  let Counter15 = 0 ;
+  let Counter16 = 0 ;
+  let Counter17 = 0 ;
+  let Counter18 = 0 ;
+  let Counter19 = 0 ;
+  let Counter20 = 0 ;
+  let Counter21 = 0 ;
+  let Counter22 = 0 ;
+  let Counter23 = 0 ;
+  let Counter24 = 0 ;
+  let Counter25 = 0 ;
+  let Counter26 = 0 ;
+  let Counter27 = 0 ;
+  let Counter28 = 0 ;
+  // let Counter29 = 0 ;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+   
+  let alif = ['ا','أ','إ','آ'];
+
+  let laa = ['ل'];
+  let haa = ['ح'];
+  let mim = ['م'];
+  let dal = ['د'];
+  let haae = ['ه' ,'ة'];
+  let raa = ['ر'];
+  let baa = ['ب'];
+  let ine = ['ع'];
+  let yaa = ['ي','ى','ئ'];
+   let noon = ['ن'];
+  let kaf = ['ك'];
+  let ouaou = ['و','ؤ'];
+  let sin = ['س'];
+  let taa = ['ت'];
+  let saad = ['ص'];
+  let ttae = ['ط'];
+  let ppaf = ['ق'];
+  let ddal = ['ذ'];
+  let gaa = ['غ'];
+  let daa = ['ض'];
+  let faa = ['ف'];
+  let zay = ['ز'];
+  let kha = ['خ'];
+  let chine = ['ش'];
+  let ddda = ['ظ'];
+  let jim = ['ج'];
+  let ttta = ['ث'];
+  
+
+  //
+
+
+
+
+  //
+  
+  
+  for(ch of text) {
+  
+    text =text.trim();
+  
+  let words = text.split(" ").length ;
+
+  
+ 
+    
+ document.getElementById("best4").innerHTML=words;
+
+  
+   if (alif.includes(ch)){
+      Counter1++
+   }
+   if (baa.includes(ch)){
+      Counter2++
+   }
+  
+   if (jim.includes(ch)){
+     Counter3++
+  }
+  
+  if (dal.includes(ch)){
+     Counter4++
+     
+  }
+  
+  if (haae.includes(ch)){
+     Counter5++
+  }
+  
+  if (ouaou.includes(ch)){
+     Counter6++
+  }
+  
+  
+  if (zay.includes(ch)){
+     Counter7++
+  }
+  if (haa.includes(ch)){
+     Counter8++
+  }
+  if (ttae.includes(ch)){
+     Counter9++
+  }
+  if (yaa.includes(ch)){
+     Counter10++
+  }
+  
+  if (kaf.includes(ch)){
+     Counter11++
+  }
+  
+  
+  if (laa.includes(ch)){
+     Counter12++
+  }
+  
+  
+  if (mim.includes(ch)){
+     Counter13++
+  }
+  
+  
+  
+  if (noon.includes(ch)){
+     Counter14++
+  }
+  
+  
+  if (sin.includes(ch)){
+     Counter15++
+  }
+  
+  
+  if (ine.includes(ch)){
+     Counter16++
+  }
+  
+  
+  if (faa.includes(ch)){
+     Counter17++
+  }
+  
+  
+  if (saad.includes(ch)){
+     Counter18++
+  }
+  
+  
+  if (ppaf.includes(ch)){
+     Counter19++
+  }
+  
+  
+  if (raa.includes(ch)){
+     Counter20++
+  }
+  
+  
+  if (chine.includes(ch)){
+     Counter21++
+  }
+  
+  
+  if (taa.includes(ch)){
+     Counter22++
+  }
+  
+  
+  if (ttta.includes(ch)){
+     Counter23++
+  }
+  
+  
+  if (kha.includes(ch)){
+     Counter24++
+  }
+  
+  
+  if (ddal.includes(ch)){
+     Counter25++
+  }
+  
+  
+  if (daa.includes(ch)){
+     Counter26++
+  }
+  
+  
+  if (ddda.includes(ch)){
+     Counter27++
+  }
+  
+  
+  if (gaa.includes(ch)){
+     Counter28++
+  }
+
+ 
+  
+ 
+
+  
+  
+  
+  }
+
+  
+  
+
+  
+  document.getElementById("text").addEventListener("keyup",countWord);
+//   document.getElementById("mano").innerHTML = text;
+  
+  
+  document.getElementById("best3").innerHTML= Counter1*1 + Counter2*2 + Counter3*3 + Counter4*4 + Counter5*5 + Counter6*6 + Counter7*7 + Counter8*8 + Counter9*9 + Counter10*10 + Counter11*20 + Counter12*30 + Counter13*40 + Counter14*50 + Counter15*60 + Counter16*70 + Counter17*80 + Counter18*90 + Counter19*100 + Counter20*200 + Counter21*300 + Counter22*400 + Counter23*500 + Counter24*600 + Counter25*700 + Counter26*800 + Counter27*900 + Counter28*1000  ;
+  
+  document.getElementById("best6").innerHTML= Counter1 + Counter2 + Counter3 + Counter4 + Counter5 + Counter6 + Counter7 + Counter8 + Counter9 + Counter10 + Counter11 + Counter12 + Counter13 + Counter14 + Counter15 + Counter16 + Counter17 + Counter18 + Counter19 + Counter20 + Counter21 + Counter22 + Counter23 + Counter24 + Counter25 + Counter26 + Counter27 + Counter28 ;
+  
+ 
+ 
+ 
+  matlob =parseInt (Counter1*1 + Counter2*2 + Counter3*3 + Counter4*4 + Counter5*5 + Counter6*6 + Counter7*7 + Counter8*8 + Counter9*9 + Counter10*10 + Counter11*20 + Counter12*30 + Counter13*40 + Counter14*50 + Counter15*60 + Counter16*70 + Counter17*80 + Counter18*90 + Counter19*100 + Counter20*200 + Counter21*300 + Counter22*400 + Counter23*500 + Counter24*600 + Counter25*700 + Counter26*800 + Counter27*900 + Counter28*1000 ) ;
+ console.log(matlob);
+
+ a = Counter1*1 + Counter2*2 + Counter3*3 + Counter4*4 + Counter5*5 + Counter6*6 + Counter7*7 + Counter8*8 + Counter9*9 + Counter10*10 + Counter11*20 + Counter12*30 + Counter13*40 + Counter14*50 + Counter15*60 + Counter16*70 + Counter17*80 + Counter18*90 + Counter19*100 + Counter20*200 + Counter21*300 + Counter22*400 + Counter23*500 + Counter24*600 + Counter25*700 + Counter26*800 + Counter27*900 + Counter28*1000 ;
+
+ 
+
+
+}
+
+
+
+
+
   // Get the current location from the browser
   function getLocation() {
     return new Promise((resolve, reject) => {
